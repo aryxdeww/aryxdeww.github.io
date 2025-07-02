@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
         <h1>&gt;_ Arya Dewangga</h1>
-        <p class="subtitle">Fictophile | Discord Bot Dev | I use Arch btw</p>
+        <p class="subtitle">"Simplicity isn’t simple, it’s removing the noise until only what matters stays."</p>
         <nav>
             <a href="#about">About</a>
             <a href="#fav">Favourites</a>
@@ -22,7 +23,7 @@
             <h2>About Me</h2>
             <div class="card">
                 <h3>Short Introduction</h3>
-                <p>Anti-social. Fictophile. April 18. Tukang ngoprek software & pecinta game story progress. Mancing perkoro sejak dini.</p>
+                <p>Anti-social. Fictophile. April 18. Tukang ngoprek software & pecinta game story progress (kecuali Guardian Tales)</p>
             </div>
 
             <div class="card">
@@ -35,24 +36,59 @@
             </div>
 
             <div class="card">
-                <h3>Main Job</h3>
+                <h3>Side Job</h3>
                 <ul>
                     <li>Discord Bot Developer</li>
                     <li>Discord Server Admin</li>
                 </ul>
             </div>
         </section>
-
+<!-- PEMBATAS KARAKTERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR -->
         <section id="fav">
             <h2>Favourites</h2>
             <div class="card">
                 <h3>Character</h3>
-                <ul>
-                    <li>Shirasu Azusa (wifee 4ever)</li>
-                    <li>Aiden Pearce (Watch Dogs)</li>
-                </ul>
+
+                <div class="character" onclick="openPopup('Azusa')">
+                    <img src="assets/azusa_icon.jpg" alt="Shirasu Azusa">
+                    <p>Shirasu Azusa</p>
+                </div>
+
+                <div class="character" onclick="openPopup('Aiden')">
+                    <img src="assets/aiden_icon.png" alt="Aiden Pearce">
+                    <p>Aiden Pearce</p>
+                </div>
+
             </div>
 
+             <!-- Popup Azusa -->
+    <div class="popup" id="popupAzusa">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup('Azusa')">✖</button>
+            <img src="assets/azusa_banner.png" alt="Shirasu Azusa Banner" class="popup-banner">
+            <h3>Shirasu Azusa</h3>
+            <p>
+                Shirasu Azusa... sniper kece dengan rambut cepol legendaris. Pemalu tapi ngangenin. 
+                Dingin di luar, tapi manisnya nggak ketolong. Temen hidup yang paling sempurna, 
+                partner in crime dan waifu seumur hidup. No debat.
+            </p>
+        </div>
+    </div>
+
+    <!-- Popup Aiden -->
+    <div class="popup" id="popupAiden">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup('Aiden')">✖</button>
+            <img src="assets/aiden_banner.png" alt="Aiden Pearce Banner" class="popup-banner">
+            <h3>Aiden Pearce</h3>
+            <p>
+                Aiden Pearce, si legenda dari Watch Dogs. Hacker kelas dewa, jago ngeretas, jago kabur, jago bikin rusuh. 
+                Misterius, kalem, tapi punya sense of justice yang kuat. Mantel panjangnya? Ikonik banget. 
+                Jalan sendirian, tapi selalu jadi mimpi buruk buat yang ngelawan dia.
+            </p>
+        </div>
+    </div>
+<!-- PEMBATAS KARAKTERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR -->
             <div class="card">
                 <h3>Games</h3>
                 <ul>
@@ -65,11 +101,13 @@
             </div>
 
             <div class="card">
-                <h3>Favourite Songs</h3>
+                <h3>Songs</h3>
                 <ul>
-                    <li>*NSYNC - It's Gonna Be Me</li>
-                    <li>Aden Foyer - Revolve</li>
                     <li>Westlife - Nothing's Gonna Change My Love For You</li>
+                    <li>*NSYNC - It's Gonna Be Me</li>
+                    <li>*NSYNC - That Girl (Will Never Be Mine)</li>
+                    <li>*NSYNC - I Want You Back</li>
+                    <li>Aden Foyer - Revolve</li>
                     <li>Creed - One Last Breath</li>
                     <li>Weezer - Buddy Holly</li>
                 </ul>
@@ -78,9 +116,9 @@
             <div class="card">
                 <h3>Food & Drink</h3>
                 <ul>
-                    <li>Mi Ayam Pak Slamet</li>
-                    <li>Nasi Goreng Pak Hadi</li>
-                    <li>Indomie Jumbo Ayam Panggang</li>
+                    <li>Mi Ayam Lada Hytammmm</li>
+                    <li>Nasi Goreng tanpa nasi</li>
+                    <li>Indomie Jumbo : Ayam Panggang</li>
                     <li>Kanzler Gochujang</li>
                     <li>Cheese Slices</li>
                     <li>Es Teh, Milktea, Pop Ice Thunder, Pop Ice Sultan Caramel</li>
@@ -93,7 +131,6 @@
             <div class="card">
                 <p>🔗 <a href="https://github.com/aryxdeww" target="_blank">GitHub</a></p>
                 <p>💬 Discord: <span class="highlight">@aryxdeww</span></p>
-                <p>🔗 <a href="https://lynk.id/aryxdeww" target="_blank">Lynk.id</a></p>
             </div>
         </section>
     </main>
@@ -101,5 +138,8 @@
     <footer>
         <p>&copy; 2025 Arya Dewangga</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
+

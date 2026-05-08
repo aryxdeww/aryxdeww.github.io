@@ -3,140 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arya Dewangga | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Blog | Arya Dewangga</title>
+    <!--<link rel="icon" type="image/jpeg" href="assets/azusa_icon.jpg">-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Reset & Dasar */
+        * { box-sizing: border-box; }
+        body {
+        	font-family: 'Roboto', sans-serif;
+        	font-weight: 400;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #1e1e1e; /* Warna background gelap */
+            color: #d4d4d4;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Container Utama - Biar semua ngumpul di tengah */
+        .main-wrapper {
+            width: 100%;
+            max-width: 750px;
+            background: #252526;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #333;
+        }
+
+        /* Header sekarang di dalem kotak, gak lari ke ujung layar */
+       header {
+             display: flex; /* Bikin isinya (gambar & teks) sejajar horizontal */
+             align-items: center; /* Teks rata tengah secara vertikal dengan gambar */
+             gap: 20px; /* Jarak antara gambar dan teks */
+             border-bottom: 2px solid #9279B3;
+             margin-bottom: 25px;
+             padding-bottom: 15px;
+        }
+        
+        .profile-pic {
+              width: 70px; /* Ukuran lebar gambar */
+               height: 70px; /* Ukuran tinggi gambar */
+               border-radius: 50%; /* Bikin gambar jadi bulat sempurna */
+               border: 2px solid #9279B3; /* Kasih ring ungu di pinggir gambar */
+               object-fit: cover; /* Agar gambar proporsional, gak gepeng */
+         }
+        
+        .header-text {
+             display: flex;
+             flex-direction: column; /* Teks judul dan sub-judul berurutan ke bawah */
+         }
+                
+		    .aka-text {
+            display: block; /* Biar dia turun ke bawah h1 */
+            font-size: 0.85rem;
+            color: #bbb;
+            margin-top: -2px; /* Narik teks sedikit ke atas biar deket sama nama utama */
+            margin-bottom: 5px;
+            font-weight: 400;
+        }
+        
+        header h1 {
+            margin: 0;
+            color: #9279B3;
+            font-size: 2rem;
+            font-weight: 900; 
+            letter-spacing: 1px;
+            line-height: 1.1; /* Sedikit dikecilkan biar jarak ke aka-text makin rapat */
+        }
+
+        header p {
+            margin: 0.5px 0 0;
+            font-size: 0.9rem;
+            color: #FFF;
+        }
+
+        section {
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            color: #9279B3;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: "∙ ";
+            margin-right: 10px;
+            color: #FFFFFF;
+        }
+
+        /* List Skill yang simpel */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .skills-list li {
+            background: #333;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            border: 1px solid #444;
+        }
+
+        .exp-item {
+            border-left: 2px solid #444;
+            padding-left: 15px;
+            margin-top: 15px;
+        }
+        
+        a, a:visited, a:hover, a:active {
+              color: #9279B3;
+              text-decoration: none;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #666;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
+<div class="main-wrapper">
     <header>
-        <h1>&gt;_ Arya Dewangga</h1>
-        <p class="subtitle">"Simplicity isn’t simple, it’s removing the noise until only what matters stays."</p>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#fav">Favourites</a>
-            <a href="#contact">Contact</a>
-        </nav>
+    	<img src="assets/aryok1.png" alt="Profile Picture" class="profile-pic">
+		<div class="header-text">
+    		<h1>ARYXDEWW</h1>
+    		<span class="aka-text">A.K.A RexDeww / Rexon</span>
+        	<p>linux-enthusiast | fictophile | stargazer</p>
+		</div>
     </header>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            Hai, aku Arya. aku anti social & introvert + internet person hehe, salam kenal :D
+        </p>
+    </section>
 
-    <main>
-        <section id="about">
-            <h2>About Me</h2>
-            <div class="card">
-                <h3>Short Introduction</h3>
-                <p>Anti-social. Fictophile. April 18. Tukang ngoprek software & pecinta game story progress (kecuali Guardian Tales)</p>
-            </div>
+    <section id="skills">
+        <h2>Favourite Characters</h2>
+        <ul class="skills-list">
+            <li><a href="https://bluearchive.fandom.com/wiki/Shirasu_Azusa">Shirasu Azusa</a></li>
+            <li>Aiden Pearce</li>
+        </ul>
+    </section>
 
-            <div class="card">
-                <h3>Hobbies</h3>
-                <ul>
-                    <li>Game (Story Progress)</li>
-                    <li>Ngoprek software</li>
-                    <li>Mancing perkoro</li>
-                </ul>
-            </div>
+   <section id="skills">
+        <h2>Favourite Songs</h2>
+        <ul class="skills-list">
+            <li>Aden Foyer - Revolve</li>
+            <li>*NSYNC - It's Gonna Be Me</li>
+            <li>Backstreet Boys - Drowning</li>
+            <li>Backstreet Boys - Shape Of My Heart</li>
+            <li>Crayon Case - Gravits (NEW)</li>
+            <li>Westlife &/ George Benson - Nothing's Gonna Change My Love For You</li>
+            <li>Westlife - Evergreen</li>
+            <li>Westlife - Fool Again</li>
+        </ul>
+    </section>
 
-            <div class="card">
-                <h3>Side Job</h3>
-                <ul>
-                    <li>Discord Bot Developer</li>
-                    <li>Discord Server Admin</li>
-                </ul>
-            </div>
-        </section>
-<!-- PEMBATAS KARAKTERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR -->
-        <section id="fav">
-            <h2>Favourites</h2>
-            <div class="card">
-                <h3>Character</h3>
-
-                <div class="character" onclick="openPopup('Azusa')">
-                    <img src="assets/azusa_icon.jpg" alt="Shirasu Azusa">
-                    <p>Shirasu Azusa</p>
-                </div>
-
-                <div class="character" onclick="openPopup('Aiden')">
-                    <img src="assets/aiden_icon.png" alt="Aiden Pearce">
-                    <p>Aiden Pearce</p>
-                </div>
-
-            </div>
-
-             <!-- Popup Azusa -->
-    <div class="popup" id="popupAzusa">
-        <div class="popup-content">
-            <button class="close-btn" onclick="closePopup('Azusa')">✖</button>
-            <img src="assets/azusa_banner.png" alt="Shirasu Azusa Banner" class="popup-banner">
-            <h3>Shirasu Azusa</h3>
-            <p>
-                Cewek fiksi yang bener-bener ngerubah hidupku sedikit lebih better dari sebelumnya karena dari caraku ngedapetinnya kek ngedapetin chindo muslimah hehehe, kalo engga gara-gara kalah gacha di codm ya gamungkin aku main blue archive...apalagi tau calon istri (Azusa).
-            </p>
+    <section id="experience">
+        <h2>(Maybe) Frequently Asked Questions</h2>
+        <div class="exp-item">
+            <strong>1. "Jadi fictophile itu beneran mas?"</strong>
+            <br><small>sedihnya iya, sampe ada kejadian plot twist aku berhenti jadi fictophile. misal kek beneran nikah di dunia nyata <br>
+            (<a href="https://www.halodoc.com/artikel/mengenal-fictophilia-tanda-tanda-dan-cara-efektif-mengatasinya?srsltid=AfmBOoolIpips6BTThBhJkeAjxuMRv7dHdUBNPdlUXEAsZhSoGJbJ175">Pelajari lebih lanjut tentang "Fictophile"</a>.)</small>
         </div>
-    </div>
-
-    <!-- Popup Aiden -->
-    <div class="popup" id="popupAiden">
-        <div class="popup-content">
-            <button class="close-btn" onclick="closePopup('Aiden')">✖</button>
-            <img src="assets/aiden_banner.png" alt="Aiden Pearce Banner" class="popup-banner">
-            <h3>Aiden Pearce</h3>
-            <p>
-                keknya ubisoft memasak kali ini karena membuat char yang looks nya membuat orang "he's just like me fr" XD.
-                ya intinya adalah gwejh
-            </p>
+        <div class="exp-item">
+            <strong>2. "Asal usul jadi Fictophile karena apa mas?"</strong>
+            <br><small>kecintaan banget sama satu karakter fiksi wkwkw, sama karena ga becus aja kalo pacaran irl wkwkw dan takut hal buruk yang pernah kulakuin sebelumnya terjadi karena dulu pernah nyoba pacaran tp mentok LDR dan itupun aku yg nyakitin wkwkw, jadii...daripada hal yang sama terulang kembali, aku memilih jadi Fictophile dsn perlahan merubah dan memperbaiki sifat buruk ku ini :D</small>
         </div>
-    </div>
-<!-- PEMBATAS KARAKTERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR -->
-            <div class="card">
-                <h3>Games</h3>
-                <ul>
-                    <li>Free Fire</li>
-                    <li>COD Mobile</li>
-                    <li>SWAT 4</li>
-                    <li>CS 1.6</li>
-                    <li>Open Arena</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>Songs</h3>
-                <ul>
-                    <li>Westlife - Nothing's Gonna Change My Love For You</li>
-                    <li>*NSYNC - It's Gonna Be Me</li>
-                    <li>*NSYNC - That Girl (Will Never Be Mine)</li>
-                    <li>*NSYNC - I Want You Back</li>
-                    <li>Aden Foyer - Revolve</li>
-                    <li>Creed - One Last Breath</li>
-                    <li>Weezer - Buddy Holly</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3>Food & Drink</h3>
-                <ul>
-                    <li>Mi Ayam Lada Hytammmm</li>
-                    <li>Nasi Goreng tanpa nasi</li>
-                    <li>Indomie Jumbo : Ayam Panggang</li>
-                    <li>Kanzler Gochujang</li>
-                    <li>Cheese Slices</li>
-                    <li>Es Teh, Milktea, Pop Ice Thunder, Pop Ice Sultan Caramel</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <div class="card">
-                <p>🔗 <a href="https://github.com/aryxdeww" target="_blank">GitHub</a></p>
-                <p>💬 Discord: <span class="highlight">@aryxdeww</span></p>
-            </div>
-        </section>
-    </main>
+    </section>
 
     <footer>
-        <p>&copy; 2025 Arya Dewangga</p>
+        btw last edit di tanggal 7 Mei 2026 di jam 19:45<br>kamu udah baca sampe sini? anjay keren...<br>keknya kamu cocok jadi pengulik kisahku <a href="e[1/1.html">disini</a>.
     </footer>
+</div>
 
-    <script src="script.js"></script>
 </body>
 </html>
-

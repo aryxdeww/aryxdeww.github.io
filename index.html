@@ -3,197 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AUTOBIOGRAPH | Arya Dewangga</title>
-    <!--<link rel="icon" type="image/jpeg" href="assets/azusa_icon.jpg">-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
-    
+    <title>ARYXDEWW | Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        * { box-sizing: border-box; }
-        body {
-        	font-family: 'Roboto', sans-serif;
-        	font-weight: 400;
-            line-height: 1.6;
+        :root {
+            --color-bg-page: #1a171d;
+            --color-bg-card: #28232d;
+            --color-text: #a899bc;
+            --color-hover: #977eb6;
+            --color-primary: #935cd8;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 20px;
-            background-color: #1a171d;
-            color: #d4d4d4;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg-page);
+            color: var(--color-text);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image: radial-gradient(circle at top right, rgba(147, 92, 216, 0.05), transparent 40%);
         }
 
-        /* Container Utama - Biar semua ngumpul di tengah */
-        .main-wrapper {
+        .profile-card {
+            background-color: var(--color-bg-card);
             width: 100%;
-            max-width: 750px;
-            background: #252526;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid #333;
+            max-width: 380px;
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(168, 153, 188, 0.05);
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
-        /* Header sekarang di dalem kotak, gak lari ke ujung layar */
-       header {
-             display: flex; /* Bikin isinya (gambar & teks) sejajar horizontal */
-             align-items: center; /* Teks rata tengah secara vertikal dengan gambar */
-             gap: 20px; /* Jarak antara gambar dan teks */
-             border-bottom: 2px solid #935cd8;
-             margin-bottom: 25px;
-             padding-bottom: 15px;
-        }
-        
-        .profile-pic {
-              width: 100px; /* Ukuran lebar gambar */
-               height: 100px; /* Ukuran tinggi gambar */
-               border-radius: 50%; /* Bikin gambar jadi bulat sempurna */
-               border: 2px solid #935cd8; /* Kasih ring ungu di pinggir gambar */
-               object-fit: cover; /* Agar gambar proporsional, gak gepeng */
-         }
-        
-        .header-text {
-             display: flex;
-             flex-direction: column; /* Teks judul dan sub-judul berurutan ke bawah */
-         }
-                
-		    .aka-text {
-            display: block; /* Biar dia turun ke bawah h1 */
-            font-size: 0.85rem;
-            color: #ffffff;
-            margin-top: -2px; /* Narik teks sedikit ke atas biar deket sama nama utama */
-            margin-bottom: 5px;
-            font-weight: 400;
-        }
-        
-        header h1 {
-            margin: 0;
-            color: #935cd8;
-            font-size: 2rem;
-            font-weight: 900; 
-            letter-spacing: 1px;
-            line-height: 1.1; /* Sedikit dikecilkan biar jarak ke aka-text makin rapat */
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        header p {
-            margin: 0.5px 0 0;
-            font-size: 0.9rem;
-            color: #FFF;
+        .avatar-container {
+            margin-bottom: 24px;
+            display: inline-block;
         }
 
-        section {
-            margin-bottom: 25px;
-        }
-
-        h2 {
-            font-size: 1.2rem;
-            color: #935cd8;
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background-color: var(--color-bg-page);
+            border: 3px solid var(--color-primary);
+            box-shadow: 0 0 20px rgba(147, 92, 216, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
             display: flex;
+            justify-content: center;
             align-items: center;
         }
 
-        h2::before {
-            content: "∙ ";
-            margin-right: 10px;
-            color: #FFFFFF;
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
-        /* List Skill yang simpel */
-        .skills-list {
+        .avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(147, 92, 216, 0.4);
+            border-color: var(--color-hover);
+        }
+
+        h1.display-name {
+            color: var(--color-primary);
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        p.tagline {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--color-text);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .social-links {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding: 0;
-            list-style: none;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 35px;
         }
 
-        .skills-list li {
-            background: #333;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            border: 1px solid #444;
+        .social-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background-color: rgba(168, 153, 188, 0.05);
+            color: var(--color-text);
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(168, 153, 188, 0.1);
         }
 
-        .exp-item {
-            border-left: 2px solid #444;
-            padding-left: 15px;
-            margin-top: 15px;
-        }
-        
-        a, a:visited, a:hover, a:active {
-              color: #9279B3;
-              text-decoration: none;
+        .social-icon:hover {
+            background-color: var(--color-hover);
+            color: var(--color-bg-page);
+            transform: translateY(-5px);
+            border-color: var(--color-hover);
+            box-shadow: 0 8px 15px rgba(151, 126, 182, 0.3);
         }
 
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.75rem;
-            color: #666;
-            border-top: 1px solid #333;
-            padding-top: 20px;
+        .action-button {
+            display: inline-block;
+            width: 100%;
+            background-color: var(--color-primary);
+            color: var(--color-bg-page);
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
+
+        .action-button:hover {
+            background-color: var(--color-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(147, 92, 216, 0.4);
+        }
+
+        .action-button i {
+            margin-left: 8px;
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .action-button:hover i {
+            transform: translateX(4px);
+        }
+
     </style>
 </head>
 <body>
 
-<div class="main-wrapper">
-    <header>
-    	<img src="assets/arya-hardpose.png" alt="Profile Picture" class="profile-pic">
-		<div class="header-text">
-    		<h1>ARYXDEWW</h1>
-    		<span class="aka-text">A.K.A RexDeww / Rexon</span>
-        	<p>Linux Enthusiast, Fictophile, Sloth-a-like, Introvert, and Asocial person.</p>
-		</div>
-    </header>
-    <section id="about">
-        <h2>About Me</h2>
-        <p>
-            Hai, aku Arya. aku orang-orangan <a href="https://www.halodoc.com/artikel/pahami-asocial-suka-menyendiri-bukan-antisosial">asosial</a>, salam kenal :D
-        </p>
-    </section>
+    <div class="profile-card">
 
-    <section id="skills">
-        <h2>Favourite Characters</h2>
-        <ul class="skills-list">
-            <li><a href="https://bluearchive.fandom.com/wiki/Shirasu_Azusa">Shirasu Azusa (Blue Archive)</a></li>
-            <li><a href="https://watchdogs.fandom.com/wiki/Aiden_Pearce">Aiden Pearce (Watch Dogs)</a></li>
-			<li><a href="https://frieren.fandom.com/wiki/Land">Land (Frieren: Beyond Journey's End)</a></li>
-        </ul>
-    </section>
-
-   <section id="skills">
-        <h2>Favourite Songs</h2>
-        <ul class="skills-list">
-            <li>Aden Foyer - Revolve</li>
-            <li>*NSYNC - It's Gonna Be Me</li>
-            <li>Backstreet Boys - Drowning</li>
-            <li>Backstreet Boys - Shape Of My Heart</li>
-            <li>Crayon Case - Gravits</li>
-            <li>Westlife - Nothing's Gonna Change My Love For You</li>
-            <li>Westlife - Evergreen</li>
-            <li>Westlife - Fool Again</li>
-        </ul>
-    </section>
-
-    <!--<section id="experience">
-        <h2>(Maybe) Frequently Asked Questions</h2>
-        <div class="exp-item">
-            <strong>1. "Jadi fictophile itu beneran mas?"</strong>
-            <br><small>sedihnya iya, sampe ada kejadian plot twist aku berhenti jadi fictophile. misal kek beneran nikah di dunia nyata <br>
-            (<a href="https://www.halodoc.com/artikel/mengenal-fictophilia-tanda-tanda-dan-cara-efektif-mengatasinya?srsltid=AfmBOoolIpips6BTThBhJkeAjxuMRv7dHdUBNPdlUXEAsZhSoGJbJ175">Pelajari lebih lanjut tentang "Fictophile"</a>.)</small>
+        <div class="avatar-container">
+            <div class="avatar">
+                <img src="assets/arya-femboy_pose.jpg" alt="ARYXDEWW Avatar" class="profile-img">
+            </div>
         </div>
-        <div class="exp-item">
-            <strong>2. "Asal usul jadi Fictophile karena apa mas?"</strong>
-            <br><small>kecintaan banget sama satu karakter fiksi wkwkw, sama karena ga becus aja kalo pacaran irl wkwkw dan takut hal buruk yang pernah kulakuin sebelumnya terjadi karena dulu pernah nyoba pacaran tp mentok LDR dan itupun aku yg nyakitin wkwkw, jadii...daripada hal yang sama terulang kembali, aku memilih jadi Fictophile dsn perlahan merubah dan memperbaiki sifat buruk ku ini :D</small>
+
+        <!-- Identitas gweh -->
+        <h1 class="display-name">ARYXDEWW</h1>
+        <p class="tagline">Linux enthusiast, Fictophile, Introvert, Asocial.</p>
+
+        <div class="social-links">
+            <a href="https://github.com/aryxdeww" class="social-icon" aria-label="GitHub" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.instagram.com/aryxdeww" class="social-icon" aria-label="Instagram" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/@aryxdeww" class="social-icon" aria-label="YouTube" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.tiktok.com/@aryxdeww" class="social-icon" aria-label="TikTok" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
         </div>
-    </section>-->
 
-    <footer>
-        btw last edit di tanggal 7 Mei 2026 di jam 19:45<br>kamu udah baca sampe sini? anjay keren...<br>keknya kamu cocok jadi pengulik kisahku <a href="diary/01-index.html">disini</a>.
-    </footer>
-</div>
+        <a href="#" class="action-button">
+            AUTOBIOGRAPHY <i class="fas fa-arrow-right"></i>
+        </a>
 
+    </div>
+<!-- Kamu seharusnya ga liat teks ini...tapi karena udh terlanjur...aku cuma mau bilang terimakasih udah sepeduli itu denganku sampai ngulik kode ini sampai inspect. aku gapernah merasa dipeduliin seperti ini hehehe-->
 </body>
 </html>

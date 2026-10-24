@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARYXDEWW | Diary</title>
+    <style>
+        :root {
+            --bg-dark: #1a171d;
+            --bg-card: #28232d;
+            --text-muted: #a899bc;
+            --accent-soft: #977eb6;
+            --accent-primary: #935cd8;
+        }
+
+        /* --- Custom Scrollbar Global & Modal --- */
+        html, .modal-content {
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-soft) var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: var(--accent-soft); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-muted);
+            font-family: sans-serif;
+            margin: 0;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 { color: var(--accent-primary); margin: 0 0 5px 0; }
+        p { margin-top: 0; color: var(--accent-soft); }
+
+        /* --- Custom Dropdown --- */
+        .dropdown {
+            position: relative;
+            width: 100%;
+            max-width: 250px;
+            margin-top: 15px;
+            user-select: none;
+        }
+
+        .dropdown-btn {
+            background-color: var(--bg-card);
+            border: 1px solid var(--accent-soft);
+            color: #fff;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .dropdown-btn:hover, .dropdown.active .dropdown-btn {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 8px rgba(147, 92, 216, 0.4);
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 115%; left: 0; width: 100%;
+            background-color: var(--bg-card);
+            border: 1px solid var(--accent-primary);
+            border-radius: 8px;
+            overflow: hidden;
+            display: none;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .dropdown.active .dropdown-content { display: block; }
+
+        .dropdown-item {
+            padding: 12px 15px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .dropdown-item:hover { background-color: var(--bg-dark); color: var(--accent-primary); }
+        .dropdown-item.active { color: var(--accent-primary); font-weight: bold; }
+
+        .arrow { font-size: 12px; transition: transform 0.3s; }
+        .dropdown.active .arrow { transform: rotate(180deg); }
+
+        #diaryContainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        /* --- Button Regular --- */
+        .diary-btn {
+            background-color: var(--bg-card);
+            color: var(--text-muted);
+            border: 1px solid var(--accent-soft);
+            padding: 15px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: left;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .diary-btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 4px 10px rgba(147, 92, 216, 0.2);
+        }
+
+        /* --- Button Special (Efek Glaze) --- */
+        .diary-btn.special {
+            background-color: var(--bg-card);
+            color: var(--text-muted);
+            border: 1px solid var(--accent-primary);
+            padding: 15px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(147, 92, 216, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .diary-btn.special::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(147, 92, 216, 0.4), transparent);
+            animation: glaze 3s infinite;
+        }
+
+        .diary-btn.special:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(147, 92, 216, 0.6);
+            background-color: var(--bg-dark);
+            border-color: var(--accent-primary);
+        }
+
+        @keyframes glaze {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        /* --- Styling Modal --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(26, 23, 29, 0.85);
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: var(--bg-card);
+            border: 1px solid var(--accent-primary);
+            border-radius: 12px;
+            padding: 25px;
+            width: 100%;
+            max-width: 650px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+
+        #modalTitle {
+            color: var(--accent-primary);
+            margin: 0 0 5px 0;
+            padding-right: 30px;
+        }
+
+        #modalDates {
+            font-size: 0.85em;
+            color: var(--accent-soft);
+            border-bottom: 1px solid var(--accent-soft);
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        #modalBody {
+            color: var(--text-muted);
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
+
+        .diary-link {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+        .diary-link:hover { color: #fff; text-decoration: underline; }
+
+        .diary-img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: block;
+            border: 1px solid var(--accent-soft);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px; right: 25px;
+            color: var(--accent-soft);
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover { color: var(--accent-primary); }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ARYXDEWW Diary</h1>
+            <p>Selamat datang di situs yang penuh "doksli" tentang keluh kesahku, motif, dan segala macem.</p>
+
+        <!-- Custom Dropdown -->
+        <div class="dropdown" id="sortDropdown">
+            <div class="dropdown-btn" id="dropdownBtn">
+                <span>Urutan bawaan</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="dropdown-content" id="dropdownContent">
+                <div class="dropdown-item active" data-value="default">Urutan bawaan</div>
+                <div class="dropdown-item" data-value="modified">Terakhir kuedit</div>
+            </div>
+        </div>
+    </header>
+
+    <main id="diaryContainer"></main>
+
+    <div id="diaryModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modalTitle">Masukan Teks</h2>
+            <div id="modalDates"></div>
+            <div id="modalBody">Memuat isi diary...</div>
+        </div>
+    </div>
+
+    <!-- ENTRIES DATA -->
+    <script src="data.js"></script>
+
+    <!-- LOGIC -->
+    <script>
+        // Pastikan history state selalu bersih setiap kali halaman di-refresh/dimuat pertama kali
+        history.replaceState(null, "");
+
+        const container = document.getElementById('diaryContainer');
+        const modal = document.getElementById('diaryModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDates = document.getElementById('modalDates');
+        const modalBody = document.getElementById('modalBody');
+        const closeBtn = document.querySelector('.close-btn');
+
+        const dropdown = document.getElementById('sortDropdown');
+        const dropdownBtn = document.getElementById('dropdownBtn');
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
+        const dropdownText = dropdownBtn.querySelector('span');
+
+        function formatDate(isoString) {
+            const date = new Date(isoString);
+            const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+            const d = date.getDate();
+            const m = months[date.getMonth()];
+            const y = date.getFullYear();
+            const hours = date.getHours().toString().padStart(2, '0');
+            const minutes = date.getMinutes().toString().padStart(2, '0');
+            return `${d} ${m} ${y}, ${hours}:${minutes}`;
+        }
+
+        function parseContent(text, codename) {
+            let parsed = text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+
+            parsed = parsed.replace(/!\[(.*?)\]\((.*?)\)/g, (match, alt, filename) => {
+                return `<img src="../assets/diary/gallery/${codename}/${filename}" alt="${alt}" class="diary-img">`;
+            });
+            parsed = parsed.replace(/\[(.*?)\]\((.*?)\)/g, `<a href="$2" target="_blank" class="diary-link">$1</a>`);
+
+            return parsed;
+        }
+
+        function renderButtons(entries) {
+            container.innerHTML = '';
+            entries.forEach(entry => {
+                const btn = document.createElement('button');
+                btn.className = entry.type === 'special' ? 'diary-btn special' : 'diary-btn';
+                btn.textContent = entry.title;
+                btn.onclick = () => openModal(entry);
+                container.appendChild(btn);
+            });
+        }
+
+        async function openModal(entry) {
+            modalTitle.textContent = entry.title;
+            modalDates.innerHTML = `Dibuat: ${formatDate(entry.date_created)} &nbsp;|&nbsp; Terakhir Diedit: ${formatDate(entry.last_modified)}`;
+            modalBody.textContent = "Memuat isi diary...";
+
+            modal.style.display = 'flex';
+
+            // Tambahkan "history bohongan" supaya tombol Back di HP jalan
+            history.pushState({ modalOpen: true }, "");
+
+            try {
+                const response = await fetch(`../assets/diary/text/${entry.file}`);
+                if (!response.ok) throw new Error('File tidak ditemukan');
+                const text = await response.text();
+                modalBody.innerHTML = parseContent(text, entry.codename);
+            } catch (error) {
+                modalBody.innerHTML = `Gagal memuat. Antara belum kutambahin file-nya, atau aku lagi nulis ini.`;
+            }
+        }
+
+        // --- SISTEM PENUTUP MODAL (HISTORY API) ---
+        function closeModal() {
+            // Kalau tutup modal lewat klik X atau klik luar, kita hapus history bohongannya
+            // dengan cara trigger 'history.back()'.
+            if (history.state && history.state.modalOpen) {
+                history.back();
+            } else {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Event ini ketrigger waktu tombol Back di HP/Browser ditekan, ATAU waktu closeModal() jalanin history.back()
+        window.addEventListener('popstate', () => {
+            modal.style.display = 'none';
+        });
+
+        // --- Logika Custom Dropdown ---
+        dropdownBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('active');
+        });
+
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', () => {
+                dropdownItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                dropdownText.textContent = item.textContent;
+                dropdown.classList.remove('active');
+
+                const value = item.getAttribute('data-value');
+                let sortedEntries = [...diaryEntries];
+
+                if (value === 'modified') {
+                    sortedEntries.sort((a, b) => new Date(b.last_modified) - new Date(a.last_modified));
+                }
+
+                renderButtons(sortedEntries);
+            });
+        });
+
+        // --- Global Event Listener ---
+        window.addEventListener('click', (e) => {
+            // Deteksi tutup modal jika klik di luar kotak modal
+            if (e.target === modal) {
+                closeModal();
+            }
+            // Deteksi tutup dropdown
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        closeBtn.onclick = closeModal;
+
+        renderButtons(diaryEntries);
+    </script>
+</body>
+</html>

@@ -1,16 +1,16 @@
 # aryxdeww.github.io
 
-Personal space, profile, and digital diary of Arya Dewangga (aryxdeww). Built with pure HTML/CSS/JS and hosted directly on GitHub Pages.
+Personal space, profile, and digital diary of Setsuna Aruya (aryxdeww). Built with pure HTML/CSS/JS and hosted directly on GitHub Pages.
 
-## 🔗 Live Site
+## Live Site
 [https://aryxdeww.github.io](https://aryxdeww.github.io)
 
-## ✨ Navigation & Features
+## Navigation & Features
 - **`/` (Profile Card):** Halaman *landing page* paling awal. Menampilkan profile card minimalis sebagai perkenalan.
 - **`/autobiography/`:** Direktori autobiografi lengkap yang menceritakan background story-ku (biasanya diakses setelah melihat profile card).
 - **`/diary/`:** Ruang personal. Tempat naruh semua unek-unek, pikiran, dan galeri memori.
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```text
 aryxdeww.github.io/

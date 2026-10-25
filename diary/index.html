@@ -283,7 +283,6 @@
 
     <!-- LOGIC -->
     <script>
-        // Pastikan history state selalu bersih setiap kali halaman di-refresh/dimuat pertama kali
         history.replaceState(null, "");
 
         const container = document.getElementById('diaryContainer');
@@ -341,7 +340,6 @@
 
             modal.style.display = 'flex';
 
-            // Tambahkan "history bohongan" supaya tombol Back di HP jalan
             history.pushState({ modalOpen: true }, "");
 
             try {
@@ -354,10 +352,7 @@
             }
         }
 
-        // --- SISTEM PENUTUP MODAL (HISTORY API) ---
         function closeModal() {
-            // Kalau tutup modal lewat klik X atau klik luar, kita hapus history bohongannya
-            // dengan cara trigger 'history.back()'.
             if (history.state && history.state.modalOpen) {
                 history.back();
             } else {
@@ -365,12 +360,10 @@
             }
         }
 
-        // Event ini ketrigger waktu tombol Back di HP/Browser ditekan, ATAU waktu closeModal() jalanin history.back()
         window.addEventListener('popstate', () => {
             modal.style.display = 'none';
         });
 
-        // --- Logika Custom Dropdown ---
         dropdownBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             dropdown.classList.toggle('active');
@@ -394,13 +387,10 @@
             });
         });
 
-        // --- Global Event Listener ---
         window.addEventListener('click', (e) => {
-            // Deteksi tutup modal jika klik di luar kotak modal
             if (e.target === modal) {
                 closeModal();
             }
-            // Deteksi tutup dropdown
             if (!dropdown.contains(e.target)) {
                 dropdown.classList.remove('active');
             }

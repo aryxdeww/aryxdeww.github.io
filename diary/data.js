@@ -8,14 +8,14 @@ const diaryEntries = [
         file: "01-ymsi.txt",
         codename: "ymsi",
         type: "special",
-        date_created: "2026-04-18T09:00",
-        last_modified: "2026-10-17T19:00"
+        date_created: "2026-10-17T09:00",
+        last_modified: "2026-10-25T01:00"
     },
     {
-        title: "Setia itu apa?",
+        title: "Setia itu apo?",
         file: "02-sta.txt",
         codename: "sta",
-        type: "special",
+        type: "regular",
         date_created: "2026-09-10T22:30",
         last_modified: "2026-10-17T19:45"
     }

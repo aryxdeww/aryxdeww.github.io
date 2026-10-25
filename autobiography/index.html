@@ -280,7 +280,7 @@
         }
 
         .song-modal-img {
-            aspect-ratio: 1/1; /* Cover album proporsinya persegi */
+            aspect-ratio: 1/1;
             max-width: 250px;
             margin: 0 auto 15px auto;
             display: block;
@@ -305,7 +305,7 @@
         .song-meta strong { color: #935cd8; }
 
         .action-link {
-            display: block;
+            display: block; /* Akan dimanipulasi oleh JS */
             text-align: center;
             background: #935cd8;
             color: #1a171d !important;
@@ -335,7 +335,6 @@
 
     <section id="about" class="section">
         <h2>Short Intro</h2>
-        <!-- Format Data Diri KTP-style -->
         <ul class="info-list">
             <li><strong>Nama</strong>: Arya Dewangga</li>
             <li><strong>Alias</strong>: Setsuna Aruya / RexDeww / Rexon</li>
@@ -365,7 +364,6 @@
                     <span class="item-subtitle">Blue Archive</span>
                 </div>
             </button>
-            <!-- Tombol karakter lainnya bisa kamu paste ulang di sini menggunakan class "item-btn std-btn" -->
             <button class="item-btn std-btn"
                 data-title="Aiden Pearce"
                 data-img="/assets/autobiography/chars/aiden-banner.webp"
@@ -378,7 +376,6 @@
                     <span class="item-subtitle">Watch Dogs</span>
                 </div>
             </button>
-
             <button class="item-btn std-btn"
                 data-title="Land"
                 data-img="/assets/autobiography/chars/land-banner.webp"
@@ -391,12 +388,11 @@
                     <span class="item-subtitle">Frieren: Beyond Journey's End</span>
                 </div>
             </button>
-
             <button class="item-btn std-btn"
                 data-title="Yukiteru Amano"
                 data-img="/assets/autobiography/chars/yukiteru-banner.webp"
                 data-desc="Ade-adean asal Sakurami Junior High School dari anime <a href='https://futurediary.fandom.com/wiki/Main_Page'>The Future Diary</a> yang aku jadikan karakter favorit karena dia literally gweh (penakut, cengeng, dan menarik diri dari sosial). alasan kedua karena aku iri sama dia punya cewe yandere obsesif posesif sama dominatif bernama <a href='https://futurediary.fandom.com/wiki/Yuno_Gasai'>Yuno Gasai</a> yang dimana bikin aku selalu berkata &quot;when yahhh punya cewe yandere obsesif dominatif&quot; (meski tau aku cuma jawir dan 3U = uelek uireng uitil)"
-                data-wiki="https://futurediary.fandom.com/wiki/Yukiteru_Amano"
+                data-link="https://futurediary.fandom.com/wiki/Yukiteru_Amano"
                 data-linktext="Ke halaman Wiki karakter ini">
                 <img src="/assets/autobiography/chars/yukiteru-avatar.webp" alt="Yukiteru Amano" class="item-avatar">
                 <div class="item-info">
@@ -407,71 +403,103 @@
         </div>
     </section>
 
-    <!-- SECTION: GAMES (BARU) -->
+    <!-- SECTION: GAMES -->
     <section id="games" class="section">
         <h2>Favorite Games</h2>
         <div class="item-grid">
+            <!-- Hapus atribut data-link dan data-linktext agar tombol tidak muncul -->
             <button class="item-btn std-btn"
                 data-title="Free Fire"
-                data-img="/assets/autobiography/ff-banner.webp"
-                data-desc="Game online pertama yang aku download 2019 lalu, senjata kesukaan ku di game ini cuma AWM, Scar, MP5, sama MP40. "
-                data-link="#"
-                data-linktext="Info game ini">
-                <img src="/assets/autobiography/ff-avatar.webp" alt="Game Icon" class="item-avatar">
+                data-img="/assets/autobiography/games/ff-banner.webp"
+                data-desc="Game online pertama yang aku download 2019 lalu, senjata kesukaan ku di game ini cuma AWM, Scar, MP5, sama MP40. ">
+                <img src="/assets/autobiography/games/ff-avatar.webp" alt="Game Icon" class="item-avatar">
                 <div class="item-info">
-                    <span class="item-title">Free Fire</span>
-                    <span class="item-subtitle">Android</span>
+                  <span class="item-title">Free Fire</span>
+                  <span class="item-subtitle">Android</span>
                 </div>
             </button>
-            <!-- Tambah game lainnya di sini -->
+            <button class="item-btn std-btn"
+                data-title="Minecraft (Java 1.8.9, Java 1.12.2, Bedrock Mobile Any)"
+                data-img="/assets/autobiography/games/mc-banner.webp"
+                data-desc="Veteran MCPE versi 1.12 btw, alasan aku suka dan main di versi itu di laptop karena...laptopku cuma kuat 2 versi itu anjay wkwkwk, itupun mentok pake Fabric atau Forge, lagian game jaman cilikan ku njirrr :D'">
+                <img src="/assets/autobiography/games/mc-avatar.webp" alt="Game Icon" class="item-avatar">
+                <div class="item-info">
+                  <span class="item-title">Free Fire</span>
+                  <span class="item-subtitle">Android</span>
+                </div>
+            </button>
             <button class="item-btn std-btn"
                 data-title="Call of Duty: Modern Warfare (2007)"
-                data-img="/assets/autobiography/cod-banner.webp"
-                data-desc="Alasan aku suka game ini tuh karena aku dari dulu kepengen maingame ini, yang katanya banyak adegan ikonik walaupun ga sebanyak di MWII. aku suka misi All Ghilled Up"
-                data-link="#"
-                data-linktext="Info game ini">
-                <img src="/assets/autobiography/cod-avatar.webp" alt="Game Icon" class="item-avatar">
+                data-img="/assets/autobiography/games/cod-banner.webp"
+                data-desc="Alasan aku suka game ini tuh karena aku dari dulu kepengen maingame ini, yang katanya banyak adegan ikonik walaupun ga sebanyak di MWII. di game ini aku suka banget sama misi All Ghillied Up sama One Shot, One Kill.">
+                <img src="/assets/autobiography/games/cod-avatar.webp" alt="Game Icon" class="item-avatar">
                 <div class="item-info">
-                    <span class="item-title">Call of Duty: MW (2007)</span>
-                    <span class="item-subtitle">Windows</span>
+                  <span class="item-title">Call of Duty: MW (2007)</span>
+                  <span class="item-subtitle">Windows</span>
+                </div>
+            </button>
+            <button class="item-btn std-btn"
+               data-title="Swat 4"
+               data-img="/assets/autobiography/games/swat4-banner.webp"
+               data-desc="Game polisi nangkap penjahat ini sudah menjadi wishlist ku sejak jaman warnetan, game ini tuh obejktif nya simpel...nangkep penjahat tanpa harus ngasih kekerasan, tapi playstyle barbar selalu kebawa wkwkw alhasil cara main ku terlalu bar-bar serta cheat unli ammo + no recoil, senjata fav ku di game ini Pepperball Gun + Taser Gun, bawa optiwand sama door wedge.">
+               <img src="/assets/autobiography/games/swat4-avatar.webp" alt="Game Icon" class="item-avatar">
+               <div class="item-info">
+                 <span class="item-title">Swat 4</span>
+                 <span class="item-subtitle">Windows</span>
+               </div>
+            </button>
+            <button class="item-btn std-btn"
+               data-title="Counter Strike 1.6"
+               data-img="/assets/autobiography/games/cs16-banner.webp"
+               data-desc="Alasan aku suka game ini tuh karena aku memang suka game FPS beginian, apalagi aku dulu mantan player SFG2 yang ga kesampaian main CS wkwkw. senjata favoritku disini cuma...apa ya namanya, kek awm, sama satunya tentu saja AK dan sering main di T-side">
+               <img src="/assets/autobiography/games/cs16-avatar.webp" alt="Game Icon" class="item-avatar">
+               <div class="item-info">
+                 <span class="item-title">Counter Strike 1.6</span>
+                 <span class="item-subtitle">Windows</span>
+               </div>
+            </button>
+            <button class="item-btn std-btn"
+                data-title="DotA Allstars (Warcraft 3 : The Frozen Throne)"
+                data-img="/assets/autobiography/games/dota-banner.webp"
+                data-desc="Meski bawaan aku benci game moba gegara mlbb bangsat anjing, game lawas yang mod map nya tercipta di tahun 2004 ini membuatku fomo tapi lupa jarak waktu, diera DotA 2 bro malah masih main DotA Allstars wkwkw. alasan aku suka game ini karena aku cuma recall memori saat dulu jaman 2013 an warnetan ada mas-mas ngajak main dota disaat aku masih gabisa login akun PB kala itu, baru kesampaian main DotA Allstars pertama kali November 2025 lalu karena ya emang baru keinget wkwkw. kebetulan aku main versi AI 6.78 dan hero fav ku Kael(Invoker), Riki Martin, Kardel Sharpeye, Netherdrake, sama Tiny. jangan tanya skill Invoker ku yang jelas jelas combo nguwawor 😂">
+                <img src="/assets/autobiography/games/dota-avatar.webp" alt="Game Icon" class="item-avatar">
+                <div class="item-info">
+                  <span class="item-title">DotA Allstars</span>
+                  <span class="item-subtitle">PC</span>
                 </div>
             </button>
         </div>
     </section>
 
-    <!-- SECTION: FOODS & DRINKS (BARU) -->
+    <!-- SECTION: FOODS & DRINKS -->
     <section id="foods" class="section">
         <h2>Favorite Foods & Drinks</h2>
         <div class="item-grid">
             <button class="item-btn std-btn"
-                data-title="Mi Ayam"
-                data-img="/assets/autobiography/fnd/nasgor-banner.webp"
-                data-desc="Makanan andalan tengah malam yang gapernah salah."
-                data-link="#"
-                data-linktext="Ke halaman Wiki makanan ini">
-                <img src="/assets/autobiography/nasgor-avatar.webp" alt="Food Icon" class="item-avatar">
+                data-title="Mie Ayam"
+                data-img="/assets/autobiography/fnd/miayam-banner.webp"
+                data-desc="Makanan wong kalahan ini kujadikan favorit karena ya...aku pecundang, wong kalahan. selain karena aku suka mi, biasanya aku bakal nilai makanan ini dari kuahnya, tiap ku seruput pasti langsung keingat kalo aku luser TwT">
+                <img src="/assets/autobiography/fnd/miayam-avatar.webp" alt="Food Icon" class="item-avatar">
                 <div class="item-info">
-                    <span class="item-title">Nasi Goreng</span>
-                    <span class="item-subtitle">Comfort Food</span>
+                    <span class="item-title">Mie Ayam</span>
+                    <span class="item-subtitle">Makanan wong kalahan</span>
                 </div>
             </button>
-            <!-- Tambah makanan/minuman lainnya di sini -->
         </div>
     </section>
 
-    <!-- SECTION: SONGS (REVAMPED) -->
+    <!-- SECTION: SONGS -->
     <section id="songs" class="section">
         <h2>Favorite Songs</h2>
         <div class="item-grid">
-            <!-- Tombol khusus lagu menggunakan class "item-btn song-btn" -->
             <button class="item-btn song-btn"
                 data-title="It's Gonna Be Me"
                 data-artist="*NSYNC"
                 data-album="No Strings Attached"
-                data-img="/assets/autobiography/nsync-cover.webp"
+                data-img="/assets/autobiography/songs/nsync-cover.webp"
                 data-notes="Lagu legend yang bikin nostalgia jaman old, asik banget buat didengerin pas lagi coding atau santai."
                 data-spotify="https://open.spotify.com/track/xyz">
-                <img src="/assets/autobiography/nsync-cover.webp" alt="Song Cover" class="item-avatar">
+                <img src="/assets/autobiography/songs/nsync-cover.webp" alt="Song Cover" class="item-avatar">
                 <div class="item-info">
                     <span class="item-title">It's Gonna Be Me</span>
                     <span class="item-subtitle">*NSYNC</span>
@@ -482,16 +510,15 @@
                 data-title="Revolve"
                 data-artist="Aden Foyer"
                 data-album="The Ballet Girl EP"
-                data-img="/assets/autobiography/revolve-cover.webp"
+                data-img="/assets/autobiography/songs/revolve-cover.webp"
                 data-notes="Vibe lagunya dapet banget, masuk playlist wajib harian."
                 data-spotify="https://open.spotify.com/track/xyz">
-                <img src="/assets/autobiography/revolve-cover.webp" alt="Song Cover" class="item-avatar">
+                <img src="/assets/autobiography/songs/revolve-cover.webp" alt="Song Cover" class="item-avatar">
                 <div class="item-info">
                     <span class="item-title">Revolve</span>
                     <span class="item-subtitle">Aden Foyer</span>
                 </div>
             </button>
-            <!-- Lanjutkan sisa lagumu menggunakan format struktur tombol ini -->
         </div>
     </section>
 
@@ -554,9 +581,20 @@
             document.getElementById("stdImg").src = this.getAttribute("data-img");
             document.getElementById("stdDesc").innerHTML = this.getAttribute("data-desc");
 
+            // LOGIKA UNTUK MENYEMBUNYIKAN/MENAMPILKAN TOMBOL LINK
+            const linkData = this.getAttribute("data-link");
+            const linkTextData = this.getAttribute("data-linktext");
             const linkBtn = document.getElementById("stdLink");
-            linkBtn.href = this.getAttribute("data-link");
-            linkBtn.textContent = this.getAttribute("data-linktext");
+            
+            if (linkData && linkTextData) {
+                // Jika atribut link dan teksnya ada (misal: di Favorite Characters)
+                linkBtn.href = linkData;
+                linkBtn.textContent = linkTextData;
+                linkBtn.style.display = "block"; // Tampilkan tombol
+            } else {
+                // Jika tidak ada atribut link (misal: di Games & Foods)
+                linkBtn.style.display = "none"; // Sembunyikan tombol
+            }
 
             stdModal.style.display = "flex";
         });

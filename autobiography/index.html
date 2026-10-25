@@ -90,6 +90,7 @@
             align-items: center;
             border-bottom: 1px solid #977eb6;
             padding-bottom: 8px;
+            margin-bottom: 15px;
         }
 
         h2::before {
@@ -98,14 +99,33 @@
             color: #a899bc;
         }
 
-        /* CARD BUTTONS LAYOUT (UPDATE) */
-        .char-buttons {
+        /* DATA DIRI LIST */
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .info-list li {
+            margin-bottom: 8px;
+            display: flex;
+        }
+
+        .info-list li strong {
+            color: #a899bc;
+            width: 90px;
+            flex-shrink: 0;
+        }
+
+        /* UNIVERSAL ITEM BUTTONS (Karakter, Game, Makanan, Lagu) */
+        .item-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 12px;
         }
 
-        .char-btn {
+        .item-btn {
             background: #1a171d;
             border: 1px solid #977eb6;
             border-radius: 12px;
@@ -119,14 +139,14 @@
             text-align: left;
         }
 
-        .char-btn:hover {
+        .item-btn:hover {
             background: #28232d;
             border-color: #935cd8;
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(147, 92, 216, 0.25);
         }
 
-        .char-avatar {
+        .item-avatar {
             width: 56px;
             height: 56px;
             border-radius: 8px;
@@ -136,49 +156,25 @@
             background-color: #28232d;
         }
 
-        .char-info {
+        .item-info {
             display: flex;
             flex-direction: column;
             gap: 2px;
             overflow: hidden;
         }
 
-        .char-name {
+        .item-title {
             font-weight: 900;
             font-size: 0.95rem;
             color: #935cd8;
             line-height: 1.2;
         }
 
-        .char-origin {
+        .item-subtitle {
             font-size: 0.8rem;
             color: #a899bc;
             font-weight: 400;
             line-height: 1.2;
-        }
-
-        .song-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 12px;
-            padding: 0;
-            list-style: none;
-        }
-
-        .song-grid li {
-            background: #1a171d;
-            padding: 12px 15px;
-            border-radius: 6px;
-            border-left: 4px solid #977eb6;
-            font-size: 0.85rem;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .song-grid li:hover {
-            transform: translateX(5px);
-            border-left-color: #935cd8;
-            background: #28232d;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         a, a:visited, a:active {
@@ -201,6 +197,7 @@
             padding-top: 20px;
         }
 
+        /* MODAL STYLING */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -263,7 +260,14 @@
         .modal-body {
             padding: 20px;
             overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #977eb6 #1a171d;
         }
+
+        .modal-body::-webkit-scrollbar { width: 8px; }
+        .modal-body::-webkit-scrollbar-track { background: #1a171d; border-radius: 4px; }
+        .modal-body::-webkit-scrollbar-thumb { background: #977eb6; border-radius: 4px; }
+        .modal-body::-webkit-scrollbar-thumb:hover { background: #935cd8; }
 
         .modal-img {
             width: 100%;
@@ -275,13 +279,32 @@
             margin-bottom: 15px;
         }
 
+        .song-modal-img {
+            aspect-ratio: 1/1; /* Cover album proporsinya persegi */
+            max-width: 250px;
+            margin: 0 auto 15px auto;
+            display: block;
+        }
+
         .modal-desc {
             font-size: 0.9rem;
             margin-bottom: 20px;
             word-wrap: break-word;
         }
 
-        .wiki-link {
+        .song-meta {
+            background: #1a171d;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #977eb6;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+        }
+
+        .song-meta span { display: block; margin-bottom: 4px; }
+        .song-meta strong { color: #935cd8; }
+
+        .action-link {
             display: block;
             text-align: center;
             background: #935cd8;
@@ -293,31 +316,8 @@
             text-decoration: none !important;
         }
 
-        .wiki-link:hover {
+        .action-link:hover {
             background: #a899bc;
-        }
-
-        .modal-body {
-            scrollbar-width: thin;
-            scrollbar-color: #977eb6 #1a171d;
-        }
-
-        .modal-body::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .modal-body::-webkit-scrollbar-track {
-            background: #1a171d;
-            border-radius: 4px;
-        }
-
-        .modal-body::-webkit-scrollbar-thumb {
-            background: #977eb6;
-            border-radius: 4px;
-        }
-
-        .modal-body::-webkit-scrollbar-thumb:hover {
-            background: #935cd8;
         }
     </style>
 </head>
@@ -335,90 +335,164 @@
 
     <section id="about" class="section">
         <h2>Short Intro</h2>
-        <p>
-            Halo, aku Arya Dewangga atau kadang dikenal sebagai "Setsuna Aruya", RexDeww, atau Rexon (2019), punya hobi yang biasa aja yaitu gaming dan vibecoding. aku orangnya berzodiac Aries, introvert (ISTP) yang juga asocial, serta fictophile. aku orangnya selalu mengutamakan kesetiaan dalam ranah cinta dan hobi.
-        </p>
+        <!-- Format Data Diri KTP-style -->
+        <ul class="info-list">
+            <li><strong>Nama</strong>: Arya Dewangga</li>
+            <li><strong>Alias</strong>: Setsuna Aruya / RexDeww / Rexon</li>
+            <li><strong>Zodiak</strong>: Aries</li>
+            <li><strong>MBTI</strong>: ISTP (Introvert)</li>
+            <li><strong>Sifat</strong>: Asocial, Fictophile</li>
+            <li><strong>Hobi</strong>: Gaming, Vibecoding</li>
+            <li><strong>Prinsip</strong>: Selalu mengutamakan kesetiaan dalam ranah cinta dan hobi.</li>
+        </ul>
     </section>
 
+    <!-- SECTION: CHARACTERS -->
     <section id="characters" class="section">
-        <h2>Favourite Characters</h2>
-        <div class="char-buttons">
-            <button class="char-btn"
-                data-name="Shirasu Azusa"
-                data-img="/assets/autobiography/azusa-banner.webp"
+        <h2>Favorite Characters</h2>
+        <div class="item-grid">
+            <button class="item-btn std-btn"
+                data-title="Shirasu Azusa"
+                data-img="/assets/autobiography/chars/azusa-banner.webp"
                 data-desc="Mba-mba yang punya julukan &quot;The Ice Queen of Trinity&quot; yang merupakan anggota Make-Up Work Club serta murid dari Trinity General School di <a href='https://bluearchive.wiki/wiki/Main_Page'>Blue Archive</a> adalah salah satu karakter favorit yang aku cintai selamanya dengan sangat setia melebihi apapun yang juga kujadikan istri karakter fiksi serta yang menjadi alasan kenapa aku jadi <a href='https://www.treatmyocd.com/blog/fictosexuality'>fictophilia</a> sampai detik ini hehe.<br><br>Karakter ini aku jadikan karakter spesial di hidupku serta dia ada dan kusinggung di situs diary ku berjudul:<br>
                 1. &quot;Fictophile: Clarification (README!)&quot;<br>
                 2. &quot;Fictophile: Origin&quot;, yang bisa kalian baca <a href='/diary/'>disini</a>"
-                data-wiki="https://bluearchive.fandom.com/wiki/Shirasu_Azusa">
-                <img src="/assets/autobiography/azusa-avatar.webp" alt="Shirasu Azusa" class="char-avatar">
-                <div class="char-info">
-                    <span class="char-name">Shirasu Azusa</span>
-                    <span class="char-origin">Blue Archive</span>
+                data-link="https://bluearchive.fandom.com/wiki/Shirasu_Azusa"
+                data-linktext="Ke halaman Wiki karakter ini">
+                <img src="/assets/autobiography/chars/azusa-avatar.webp" alt="Shirasu Azusa" class="item-avatar">
+                <div class="item-info">
+                    <span class="item-title">Shirasu Azusa</span>
+                    <span class="item-subtitle">Blue Archive</span>
                 </div>
             </button>
-
-            <button class="char-btn"
-                data-name="Aiden Pearce"
-                data-img="/assets/autobiography/aiden-banner.webp"
+            <!-- Tombol karakter lainnya bisa kamu paste ulang di sini menggunakan class "item-btn std-btn" -->
+            <button class="item-btn std-btn"
+                data-title="Aiden Pearce"
+                data-img="/assets/autobiography/chars/aiden-banner.webp"
                 data-desc="Om-om hacker asal Chicago dari game <a href='https://watchdogs.fandom.com/wiki/Watch_Dogs_Wiki'>Watch Dogs</a> yang memang aku gemari bahkan sejak lagu &quot;Mr Kitty - After Dark&quot; naik, nah alasan kenapa aku jadikan Aiden Pearce sebagai karakter favoritku karena aku suka tema hacking gitu meski aku ga begitu masuk dunia cybersecurity, alasan kedua karena aku suka tampilan dia yang vigilant banget, dan terakhir...alasan ketiga karena GWE PEN MAIN GAMENYA ANJENGGGGGG (sampe sekarang belum bisa main karena gapunya PS3/PC yang proper.)"
-                data-wiki="https://watchdogs.fandom.com/wiki/Aiden_Pearce">
-                <img src="/assets/autobiography/aiden-avatar.webp" alt="Aiden Pearce" class="char-avatar">
-                <div class="char-info">
-                    <span class="char-name">Aiden Pearce</span>
-                    <span class="char-origin">Watch Dogs</span>
+                data-link="https://watchdogs.fandom.com/wiki/Aiden_Pearce"
+                data-linktext="Ke halaman Wiki karakter ini">
+                <img src="/assets/autobiography/chars/aiden-avatar.webp" alt="Aiden Pearce" class="item-avatar">
+                <div class="item-info">
+                    <span class="item-title">Aiden Pearce</span>
+                    <span class="item-subtitle">Watch Dogs</span>
                 </div>
             </button>
 
-            <button class="char-btn"
-                data-name="Land"
-                data-img="/assets/autobiography/land-banner.webp"
+            <button class="item-btn std-btn"
+                data-title="Land"
+                data-img="/assets/autobiography/chars/land-banner.webp"
                 data-desc="Mas-mas mage jago clonning dari anime <a href='https://frieren.fandom.com/wiki/Frieren_Wiki'>Frieren: Beyond Journey's End</a> ini ku jadikan karakter favorit karena suka gaya avoidant dan cool nya, alasan kedua sih karena suka ship dia sama karakter <a href='https://frieren.fandom.com/wiki/%C3%9Cbel'>Übel</a>. <br> (FYI, <a href='https://frieren.fandom.com/wiki/%C3%9Cbel'>Übel</a> dulu pernah kuwaifuin alongside Shirasu Azusa cuma karena ship dia ama Land,  sebelum mutusin buat setia sama Shirasu Azusa wkwkw)"
-                data-wiki="https://frieren.fandom.com/wiki/Land">
-                <img src="/assets/autobiography/land-avatar.webp" alt="Land" class="char-avatar">
-                <div class="char-info">
-                    <span class="char-name">Land</span>
-                    <span class="char-origin">Frieren: Beyond Journey's End</span>
+                data-link="https://frieren.fandom.com/wiki/Land"
+                data-linktext="Ke halaman Wiki karakter ini">
+                <img src="/assets/autobiography/chars/land-avatar.webp" alt="Land" class="item-avatar">
+                <div class="item-info">
+                    <span class="item-title">Land</span>
+                    <span class="item-subtitle">Frieren: Beyond Journey's End</span>
                 </div>
             </button>
 
-            <button class="char-btn"
-                data-name="Yukiteru Amano"
-                data-img="/assets/autobiography/yukiteru-banner.webp"
+            <button class="item-btn std-btn"
+                data-title="Yukiteru Amano"
+                data-img="/assets/autobiography/chars/yukiteru-banner.webp"
                 data-desc="Ade-adean asal Sakurami Junior High School dari anime <a href='https://futurediary.fandom.com/wiki/Main_Page'>The Future Diary</a> yang aku jadikan karakter favorit karena dia literally gweh (penakut, cengeng, dan menarik diri dari sosial). alasan kedua karena aku iri sama dia punya cewe yandere obsesif posesif sama dominatif bernama <a href='https://futurediary.fandom.com/wiki/Yuno_Gasai'>Yuno Gasai</a> yang dimana bikin aku selalu berkata &quot;when yahhh punya cewe yandere obsesif dominatif&quot; (meski tau aku cuma jawir dan 3U = uelek uireng uitil)"
-                data-wiki="https://futurediary.fandom.com/wiki/Yukiteru_Amano">
-                <img src="/assets/autobiography/yukiteru-avatar.webp" alt="Yukiteru Amano" class="char-avatar">
-                <div class="char-info">
-                    <span class="char-name">Yukiteru Amano</span>
-                    <span class="char-origin">The Future Diary</span>
+                data-wiki="https://futurediary.fandom.com/wiki/Yukiteru_Amano"
+                data-linktext="Ke halaman Wiki karakter ini">
+                <img src="/assets/autobiography/chars/yukiteru-avatar.webp" alt="Yukiteru Amano" class="item-avatar">
+                <div class="item-info">
+                    <span class="item-title">Yukiteru Amano</span>
+                    <span class="item-subtitle">The Future Diary</span>
                 </div>
             </button>
         </div>
     </section>
 
+    <!-- SECTION: GAMES (BARU) -->
+    <section id="games" class="section">
+        <h2>Favorite Games</h2>
+        <div class="item-grid">
+            <button class="item-btn std-btn"
+                data-title="Free Fire"
+                data-img="/assets/autobiography/ff-banner.webp"
+                data-desc="Game online pertama yang aku download 2019 lalu, senjata kesukaan ku di game ini cuma AWM, Scar, MP5, sama MP40. "
+                data-link="#"
+                data-linktext="Info game ini">
+                <img src="/assets/autobiography/ff-avatar.webp" alt="Game Icon" class="item-avatar">
+                <div class="item-info">
+                    <span class="item-title">Free Fire</span>
+                    <span class="item-subtitle">Android</span>
+                </div>
+            </button>
+            <!-- Tambah game lainnya di sini -->
+            <button class="item-btn std-btn"
+                data-title="Call of Duty: Modern Warfare (2007)"
+                data-img="/assets/autobiography/cod-banner.webp"
+                data-desc="Alasan aku suka game ini tuh karena aku dari dulu kepengen maingame ini, yang katanya banyak adegan ikonik walaupun ga sebanyak di MWII. aku suka misi All Ghilled Up"
+                data-link="#"
+                data-linktext="Info game ini">
+                <img src="/assets/autobiography/cod-avatar.webp" alt="Game Icon" class="item-avatar">
+                <div class="item-info">
+                    <span class="item-title">Call of Duty: MW (2007)</span>
+                    <span class="item-subtitle">Windows</span>
+                </div>
+            </button>
+        </div>
+    </section>
+
+    <!-- SECTION: FOODS & DRINKS (BARU) -->
+    <section id="foods" class="section">
+        <h2>Favorite Foods & Drinks</h2>
+        <div class="item-grid">
+            <button class="item-btn std-btn"
+                data-title="Mi Ayam"
+                data-img="/assets/autobiography/fnd/nasgor-banner.webp"
+                data-desc="Makanan andalan tengah malam yang gapernah salah."
+                data-link="#"
+                data-linktext="Ke halaman Wiki makanan ini">
+                <img src="/assets/autobiography/nasgor-avatar.webp" alt="Food Icon" class="item-avatar">
+                <div class="item-info">
+                    <span class="item-title">Nasi Goreng</span>
+                    <span class="item-subtitle">Comfort Food</span>
+                </div>
+            </button>
+            <!-- Tambah makanan/minuman lainnya di sini -->
+        </div>
+    </section>
+
+    <!-- SECTION: SONGS (REVAMPED) -->
     <section id="songs" class="section">
-        <h2>(Top 10) Favourite Songs O.A.T</h2>
-        <ul class="song-grid">
-            <li>*NSYNC - It's Gonna Be Me</li>
-            <li>1nonly, Freddie Dredd ft. 870glizzy - GRAILED</li>
-            <li>Aden Foyer - Revolve</li>
-            <li>Backstreet Boys - Drowning</li>
-            <li>Backstreet Boys - Shape Of My Heart</li>
-            <li>Backstreet Boys - I Want It That Way</li>
-            <li>Crayon Case - Gravits</li>
-            <li>Don Toliver - Tore Up</li>
-            <li>Eagles - Hotel California</li>
-            <li>Ellie Goulding - Close To Me</li>
-            <li>Eminem - Fuel</li>
-            <li>Eminem, Rihanna - Love The Way You Lie</li>
-            <li>Europe - The Final Countdown</li>
-            <li>Imagine Dragons - Believer</li>
-            <li>Imagine Dragons - Bad Liar</li>
-            <li>Jamiroquai - Virtual Insanity</li>
-            <li>King Von - Took Her To The O</li>
-            <li>Westlife - Evergreen</li>
-            <li>Westlife - Fool Again</li>
-            <li>Westlife - Nothing's Gonna Change My Love For You</li>
-        </ul>
+        <h2>Favorite Songs</h2>
+        <div class="item-grid">
+            <!-- Tombol khusus lagu menggunakan class "item-btn song-btn" -->
+            <button class="item-btn song-btn"
+                data-title="It's Gonna Be Me"
+                data-artist="*NSYNC"
+                data-album="No Strings Attached"
+                data-img="/assets/autobiography/nsync-cover.webp"
+                data-notes="Lagu legend yang bikin nostalgia jaman old, asik banget buat didengerin pas lagi coding atau santai."
+                data-spotify="https://open.spotify.com/track/xyz">
+                <img src="/assets/autobiography/nsync-cover.webp" alt="Song Cover" class="item-avatar">
+                <div class="item-info">
+                    <span class="item-title">It's Gonna Be Me</span>
+                    <span class="item-subtitle">*NSYNC</span>
+                </div>
+            </button>
+
+            <button class="item-btn song-btn"
+                data-title="Revolve"
+                data-artist="Aden Foyer"
+                data-album="The Ballet Girl EP"
+                data-img="/assets/autobiography/revolve-cover.webp"
+                data-notes="Vibe lagunya dapet banget, masuk playlist wajib harian."
+                data-spotify="https://open.spotify.com/track/xyz">
+                <img src="/assets/autobiography/revolve-cover.webp" alt="Song Cover" class="item-avatar">
+                <div class="item-info">
+                    <span class="item-title">Revolve</span>
+                    <span class="item-subtitle">Aden Foyer</span>
+                </div>
+            </button>
+            <!-- Lanjutkan sisa lagumu menggunakan format struktur tombol ini -->
+        </div>
     </section>
 
     <footer class="footer">
@@ -426,55 +500,96 @@
     </footer>
 </div>
 
-<div id="charModal" class="modal-overlay">
+<!-- =====================================
+     MODAL STANDAR (Karakter, Game, Makanan)
+     ===================================== -->
+<div id="standardModal" class="modal-overlay">
     <div class="modal-content">
         <div class="modal-header">
-            <h3 id="modalTitle">Nama Karakter</h3>
-            <button class="close-btn" id="closeModal">&times;</button>
+            <h3 id="stdTitle">Judul</h3>
+            <button class="close-btn" id="stdClose">&times;</button>
         </div>
         <div class="modal-body">
-            <img id="modalImg" src="" alt="Character Image" class="modal-img">
-            <p id="modalDesc" class="modal-desc">Deskripsi singkat akan muncul di sini.</p>
-            <a id="modalWiki" href="#" target="_blank" class="wiki-link">Ke Halaman Wiki</a>
+            <img id="stdImg" src="" alt="Banner" class="modal-img">
+            <p id="stdDesc" class="modal-desc">Deskripsi</p>
+            <a id="stdLink" href="#" target="_blank" class="action-link">Link Teks</a>
+        </div>
+    </div>
+</div>
+
+<!-- =====================================
+     MODAL KHUSUS LAGU
+     ===================================== -->
+<div id="songModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="songTitle">Judul Lagu</h3>
+            <button class="close-btn" id="songClose">&times;</button>
+        </div>
+        <div class="modal-body">
+            <!-- Gambar cover album rasio 1:1 -->
+            <img id="songImg" src="" alt="Album Cover" class="modal-img song-modal-img">
+
+            <!-- Metadata Lagu -->
+            <div class="song-meta">
+                <span><strong>Artist:</strong> <span id="songArtist">Nama Artis</span></span>
+                <span><strong>Album:</strong> <span id="songAlbum">Nama Album</span></span>
+            </div>
+
+            <p id="songNotes" class="modal-desc">Notes lagu dari kamu.</p>
+            <a id="songSpotify" href="#" target="_blank" class="action-link">Dengerin lagu ini di Spotify</a>
         </div>
     </div>
 </div>
 
 <script>
-    const modal = document.getElementById("charModal");
-    const closeModalBtn = document.getElementById("closeModal");
-    const charButtons = document.querySelectorAll(".char-btn");
+    // --- SETUP MODAL STANDAR ---
+    const stdModal = document.getElementById("standardModal");
+    const stdClose = document.getElementById("stdClose");
+    const stdButtons = document.querySelectorAll(".std-btn");
 
-    const modalTitle = document.getElementById("modalTitle");
-    const modalImg = document.getElementById("modalImg");
-    const modalDesc = document.getElementById("modalDesc");
-    const modalWiki = document.getElementById("modalWiki");
-
-    charButtons.forEach(button => {
+    stdButtons.forEach(button => {
         button.addEventListener("click", function() {
-            const name = this.getAttribute("data-name");
-            const img = this.getAttribute("data-img");
-            const desc = this.getAttribute("data-desc");
-            const wiki = this.getAttribute("data-wiki");
+            document.getElementById("stdTitle").textContent = this.getAttribute("data-title");
+            document.getElementById("stdImg").src = this.getAttribute("data-img");
+            document.getElementById("stdDesc").innerHTML = this.getAttribute("data-desc");
 
-            modalTitle.textContent = name;
-            modalImg.src = img;
+            const linkBtn = document.getElementById("stdLink");
+            linkBtn.href = this.getAttribute("data-link");
+            linkBtn.textContent = this.getAttribute("data-linktext");
 
-            modalDesc.innerHTML = desc;
-            modalWiki.href = wiki;
-
-            modal.style.display = "flex";
+            stdModal.style.display = "flex";
         });
     });
 
-    closeModalBtn.addEventListener("click", function() {
-        modal.style.display = "none";
+    stdClose.addEventListener("click", () => stdModal.style.display = "none");
+
+    // --- SETUP MODAL LAGU ---
+    const songModal = document.getElementById("songModal");
+    const songClose = document.getElementById("songClose");
+    const songButtons = document.querySelectorAll(".song-btn");
+
+    songButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            document.getElementById("songTitle").textContent = this.getAttribute("data-title");
+            document.getElementById("songImg").src = this.getAttribute("data-img");
+
+            document.getElementById("songArtist").textContent = this.getAttribute("data-artist");
+            document.getElementById("songAlbum").textContent = this.getAttribute("data-album");
+            document.getElementById("songNotes").innerHTML = this.getAttribute("data-notes");
+
+            document.getElementById("songSpotify").href = this.getAttribute("data-spotify");
+
+            songModal.style.display = "flex";
+        });
     });
 
+    songClose.addEventListener("click", () => songModal.style.display = "none");
+
+    // Tutup modal jika area luar diklik (berlaku untuk kedua modal)
     window.addEventListener("click", function(event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
+        if (event.target === stdModal) stdModal.style.display = "none";
+        if (event.target === songModal) songModal.style.display = "none";
     });
 </script>
 

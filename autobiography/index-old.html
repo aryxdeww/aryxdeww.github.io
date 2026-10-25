@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARYXDEWW | Autobiography</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #1a171d;
+            color: #d4d4d4;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 750px;
+            background: #28232d;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            border: 1px solid #977eb6;
+        }
+
+        .header {
+             display: flex;
+             align-items: center;
+             gap: 20px;
+             border-bottom: 2px solid #935cd8;
+             margin-bottom: 25px;
+             padding-bottom: 15px;
+        }
+
+        .profile-pic {
+             width: 100px;
+             height: 100px;
+             border-radius: 50%;
+             border: 2px solid #935cd8;
+             object-fit: cover;
+        }
+
+        .header-text {
+             display: flex;
+             flex-direction: column;
+        }
+
+        .aka-text {
+            display: block;
+            font-size: 0.65rem;
+            color: #a899bc;
+            margin-top: -2px;
+            margin-bottom: 5px;
+            font-weight: 400;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #935cd8;
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .header p {
+            margin: 0.5px 0 0;
+            font-size: 0.9rem;
+            color: #d4d4d4;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            color: #935cd8;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #977eb6;
+            padding-bottom: 8px;
+        }
+
+        h2::before {
+            content: "∙";
+            margin-right: 10px;
+            color: #a899bc;
+        }
+
+        /* CARD BUTTONS LAYOUT (UPDATE) */
+        .char-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 12px;
+        }
+
+        .char-btn {
+            background: #1a171d;
+            border: 1px solid #977eb6;
+            border-radius: 12px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            text-align: left;
+        }
+
+        .char-btn:hover {
+            background: #28232d;
+            border-color: #935cd8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(147, 92, 216, 0.25);
+        }
+
+        .char-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 2px solid #935cd8;
+            flex-shrink: 0;
+            background-color: #28232d;
+        }
+
+        .char-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            overflow: hidden;
+        }
+
+        .char-name {
+            font-weight: 900;
+            font-size: 0.95rem;
+            color: #935cd8;
+            line-height: 1.2;
+        }
+
+        .char-origin {
+            font-size: 0.8rem;
+            color: #a899bc;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .song-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .song-grid li {
+            background: #1a171d;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border-left: 4px solid #977eb6;
+            font-size: 0.85rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .song-grid li:hover {
+            transform: translateX(5px);
+            border-left-color: #935cd8;
+            background: #28232d;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        a, a:visited, a:active {
+             color: #977eb6;
+             text-decoration: none;
+             transition: color 0.2s ease;
+        }
+
+        a:hover {
+             color: #935cd8;
+             text-decoration: underline;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #a899bc;
+            border-top: 1px solid #977eb6;
+            padding-top: 20px;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(26, 23, 29, 0.8);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #28232d;
+            border: 1px solid #977eb6;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 450px;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #977eb6;
+            background: #1a171d;
+            flex-shrink: 0;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: #935cd8;
+            font-size: 1.2rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #a899bc;
+            font-size: 1.5rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover { color: #935cd8; }
+
+        .modal-body {
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            border-radius: 6px;
+            background: #1a171d;
+            border: 1px solid #977eb6;
+            margin-bottom: 15px;
+        }
+
+        .modal-desc {
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            word-wrap: break-word;
+        }
+
+        .wiki-link {
+            display: block;
+            text-align: center;
+            background: #935cd8;
+            color: #1a171d !important;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.2s;
+            text-decoration: none !important;
+        }
+
+        .wiki-link:hover {
+            background: #a899bc;
+        }
+
+        .modal-body {
+            scrollbar-width: thin;
+            scrollbar-color: #977eb6 #1a171d;
+        }
+
+        .modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: #1a171d;
+            border-radius: 4px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background: #977eb6;
+            border-radius: 4px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb:hover {
+            background: #935cd8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <header class="header">
+        <img src="/assets/autobiography/arya.webp" alt="Profile Picture" class="profile-pic">
+        <div class="header-text">
+            <h1>ARYXDEWW</h1>
+            <span class="aka-text">A.K.A "Setsuna Aruya" / RexDeww / Rexon</span>
+            <p>pecundang yang mungkin anda kenal.</p>
+        </div>
+    </header>
+
+    <section id="about" class="section">
+        <h2>Short Intro</h2>
+        <p>
+            Halo, aku Arya Dewangga atau kadang dikenal sebagai "Setsuna Aruya", RexDeww, atau Rexon (2019), punya hobi yang biasa aja yaitu gaming dan vibecoding. aku orangnya berzodiac Aries, introvert (ISTP) yang juga asocial, serta fictophile. aku orangnya selalu mengutamakan kesetiaan dalam ranah cinta dan hobi.
+        </p>
+    </section>
+
+    <section id="characters" class="section">
+        <h2>Favourite Characters</h2>
+        <div class="char-buttons">
+            <button class="char-btn"
+                data-name="Shirasu Azusa"
+                data-img="/assets/autobiography/azusa-banner.webp"
+                data-desc="Mba-mba yang punya julukan &quot;The Ice Queen of Trinity&quot; yang merupakan anggota Make-Up Work Club serta murid dari Trinity General School di <a href='https://bluearchive.wiki/wiki/Main_Page'>Blue Archive</a> adalah salah satu karakter favorit yang aku cintai selamanya dengan sangat setia melebihi apapun yang juga kujadikan istri karakter fiksi serta yang menjadi alasan kenapa aku jadi <a href='https://www.treatmyocd.com/blog/fictosexuality'>fictophilia</a> sampai detik ini hehe.<br><br>Karakter ini aku jadikan karakter spesial di hidupku serta dia ada dan kusinggung di situs diary ku berjudul:<br>
+                1. &quot;Fictophile: Clarification (README!)&quot;<br>
+                2. &quot;Fictophile: Origin&quot;, yang bisa kalian baca <a href='/diary/'>disini</a>"
+                data-wiki="https://bluearchive.fandom.com/wiki/Shirasu_Azusa">
+                <img src="/assets/autobiography/azusa-avatar.webp" alt="Shirasu Azusa" class="char-avatar">
+                <div class="char-info">
+                    <span class="char-name">Shirasu Azusa</span>
+                    <span class="char-origin">Blue Archive</span>
+                </div>
+            </button>
+
+            <button class="char-btn"
+                data-name="Aiden Pearce"
+                data-img="/assets/autobiography/aiden-banner.webp"
+                data-desc="Om-om hacker asal Chicago dari game <a href='https://watchdogs.fandom.com/wiki/Watch_Dogs_Wiki'>Watch Dogs</a> yang memang aku gemari bahkan sejak lagu &quot;Mr Kitty - After Dark&quot; naik, nah alasan kenapa aku jadikan Aiden Pearce sebagai karakter favoritku karena aku suka tema hacking gitu meski aku ga begitu masuk dunia cybersecurity, alasan kedua karena aku suka tampilan dia yang vigilant banget, dan terakhir...alasan ketiga karena GWE PEN MAIN GAMENYA ANJENGGGGGG (sampe sekarang belum bisa main karena gapunya PS3/PC yang proper.)"
+                data-wiki="https://watchdogs.fandom.com/wiki/Aiden_Pearce">
+                <img src="/assets/autobiography/aiden-avatar.webp" alt="Aiden Pearce" class="char-avatar">
+                <div class="char-info">
+                    <span class="char-name">Aiden Pearce</span>
+                    <span class="char-origin">Watch Dogs</span>
+                </div>
+            </button>
+
+            <button class="char-btn"
+                data-name="Land"
+                data-img="/assets/autobiography/land-banner.webp"
+                data-desc="Mas-mas mage jago clonning dari anime <a href='https://frieren.fandom.com/wiki/Frieren_Wiki'>Frieren: Beyond Journey's End</a> ini ku jadikan karakter favorit karena suka gaya avoidant dan cool nya, alasan kedua sih karena suka ship dia sama karakter <a href='https://frieren.fandom.com/wiki/%C3%9Cbel'>Übel</a>. <br> (FYI, <a href='https://frieren.fandom.com/wiki/%C3%9Cbel'>Übel</a> dulu pernah kuwaifuin alongside Shirasu Azusa cuma karena ship dia ama Land,  sebelum mutusin buat setia sama Shirasu Azusa wkwkw)"
+                data-wiki="https://frieren.fandom.com/wiki/Land">
+                <img src="/assets/autobiography/land-avatar.webp" alt="Land" class="char-avatar">
+                <div class="char-info">
+                    <span class="char-name">Land</span>
+                    <span class="char-origin">Frieren: Beyond Journey's End</span>
+                </div>
+            </button>
+
+            <button class="char-btn"
+                data-name="Yukiteru Amano"
+                data-img="/assets/autobiography/yukiteru-banner.webp"
+                data-desc="Ade-adean asal Sakurami Junior High School dari anime <a href='https://futurediary.fandom.com/wiki/Main_Page'>The Future Diary</a> yang aku jadikan karakter favorit karena dia literally gweh (penakut, cengeng, dan menarik diri dari sosial). alasan kedua karena aku iri sama dia punya cewe yandere obsesif posesif sama dominatif bernama <a href='https://futurediary.fandom.com/wiki/Yuno_Gasai'>Yuno Gasai</a> yang dimana bikin aku selalu berkata &quot;when yahhh punya cewe yandere obsesif dominatif&quot; (meski tau aku cuma jawir dan 3U = uelek uireng uitil)"
+                data-wiki="https://futurediary.fandom.com/wiki/Yukiteru_Amano">
+                <img src="/assets/autobiography/yukiteru-avatar.webp" alt="Yukiteru Amano" class="char-avatar">
+                <div class="char-info">
+                    <span class="char-name">Yukiteru Amano</span>
+                    <span class="char-origin">The Future Diary</span>
+                </div>
+            </button>
+        </div>
+    </section>
+
+    <section id="songs" class="section">
+        <h2>(Top 10) Favourite Songs O.A.T</h2>
+        <ul class="song-grid">
+            <li>*NSYNC - It's Gonna Be Me</li>
+            <li>1nonly, Freddie Dredd ft. 870glizzy - GRAILED</li>
+            <li>Aden Foyer - Revolve</li>
+            <li>Backstreet Boys - Drowning</li>
+            <li>Backstreet Boys - Shape Of My Heart</li>
+            <li>Backstreet Boys - I Want It That Way</li>
+            <li>Crayon Case - Gravits</li>
+            <li>Don Toliver - Tore Up</li>
+            <li>Eagles - Hotel California</li>
+            <li>Ellie Goulding - Close To Me</li>
+            <li>Eminem - Fuel</li>
+            <li>Eminem, Rihanna - Love The Way You Lie</li>
+            <li>Europe - The Final Countdown</li>
+            <li>Imagine Dragons - Believer</li>
+            <li>Imagine Dragons - Bad Liar</li>
+            <li>Jamiroquai - Virtual Insanity</li>
+            <li>King Von - Took Her To The O</li>
+            <li>Westlife - Evergreen</li>
+            <li>Westlife - Fool Again</li>
+            <li>Westlife - Nothing's Gonna Change My Love For You</li>
+        </ul>
+    </section>
+
+    <footer class="footer">
+        kamu udah baca sampe sini? anjay keren...<br>keknya kamu cocok jadi pengulik kisahku <a href="/diary">disini</a>.
+    </footer>
+</div>
+
+<div id="charModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Nama Karakter</h3>
+            <button class="close-btn" id="closeModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <img id="modalImg" src="" alt="Character Image" class="modal-img">
+            <p id="modalDesc" class="modal-desc">Deskripsi singkat akan muncul di sini.</p>
+            <a id="modalWiki" href="#" target="_blank" class="wiki-link">Ke Halaman Wiki</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById("charModal");
+    const closeModalBtn = document.getElementById("closeModal");
+    const charButtons = document.querySelectorAll(".char-btn");
+
+    const modalTitle = document.getElementById("modalTitle");
+    const modalImg = document.getElementById("modalImg");
+    const modalDesc = document.getElementById("modalDesc");
+    const modalWiki = document.getElementById("modalWiki");
+
+    charButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            const name = this.getAttribute("data-name");
+            const img = this.getAttribute("data-img");
+            const desc = this.getAttribute("data-desc");
+            const wiki = this.getAttribute("data-wiki");
+
+            modalTitle.textContent = name;
+            modalImg.src = img;
+
+            modalDesc.innerHTML = desc;
+            modalWiki.href = wiki;
+
+            modal.style.display = "flex";
+        });
+    });
+
+    closeModalBtn.addEventListener("click", function() {
+        modal.style.display = "none";
+    });
+
+    window.addEventListener("click", function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+</script>
+
+</body>
+</html>

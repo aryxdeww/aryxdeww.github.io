@@ -9,151 +9,207 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
 
     <style>
-        * { box-sizing: border-box; }
+        /* ==========================================================================
+           1. CORE STYLING & PALETTE (REQUIRED COLORS)
+           ========================================================================== */
+        :root {
+            --bg-body: #1a171d;
+            --bg-card: #28232d;
+            --purple-main: #935cd8;
+            --purple-border: #977eb6;
+            --purple-light: #a899bc;
+            --text-main: #d4d4d4;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             font-family: 'Roboto', sans-serif;
             font-weight: 400;
             line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #1a171d;
-            color: #d4d4d4;
+            background-color: var(--bg-body);
+            color: var(--text-main);
             display: flex;
             justify-content: center;
+            min-height: 100vh;
+            padding: 40px 15px;
         }
 
+        /* ==========================================================================
+           2. MAIN CONTAINER & LAYOUT STRUCTURE
+           ========================================================================== */
         .main-wrapper {
             width: 100%;
-            max-width: 750px;
-            background: #28232d;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            border: 1px solid #977eb6;
+            max-width: 740px;
+            background: var(--bg-card);
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid var(--purple-border);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
         }
 
+        .section {
+            margin-bottom: 35px;
+        }
+
+        /* ==========================================================================
+           3. HEADER & PROFILE SECTION
+           ========================================================================== */
         .header {
-             display: flex;
-             align-items: center;
-             gap: 20px;
-             border-bottom: 2px solid #935cd8;
-             margin-bottom: 25px;
-             padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            border-bottom: 1px dashed var(--purple-border);
+            margin-bottom: 30px;
+            padding-bottom: 24px;
         }
 
         .profile-pic {
-             width: 100px;
-             height: 100px;
-             border-radius: 50%;
-             border: 2px solid #935cd8;
-             object-fit: cover;
+            width: 95px;
+            height: 95px;
+            border-radius: 50%;
+            border: 2px solid var(--purple-main);
+            object-fit: cover;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.03);
         }
 
         .header-text {
-             display: flex;
-             flex-direction: column;
-        }
-
-        .aka-text {
-            display: block;
-            font-size: 0.65rem;
-            color: #a899bc;
-            margin-top: -2px;
-            margin-bottom: 5px;
-            font-weight: 400;
+            display: flex;
+            flex-direction: column;
         }
 
         .header h1 {
-            margin: 0;
-            color: #935cd8;
+            color: var(--purple-main);
             font-size: 2rem;
             font-weight: 900;
             letter-spacing: 1px;
             line-height: 1.1;
         }
 
+        .aka-text {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--purple-light);
+            margin-top: 3px;
+            margin-bottom: 6px;
+            font-weight: 400;
+        }
+
         .header p {
-            margin: 0.5px 0 0;
             font-size: 0.9rem;
-            color: #d4d4d4;
+            color: var(--text-main);
         }
 
-        .section {
-            margin-bottom: 30px;
-        }
-
+        /* ==========================================================================
+           4. TYPOGRAPHY, TITLES & GLOBAL LINKS
+           ========================================================================== */
         h2 {
-            font-size: 1.2rem;
-            color: #935cd8;
+            font-size: 1.15rem;
+            color: var(--purple-main);
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #977eb6;
-            padding-bottom: 8px;
-            margin-bottom: 15px;
+            gap: 10px;
+            border-bottom: 1px solid var(--purple-border);
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
         }
 
-        /*h2::before {
+        h2::before {
             content: "";
-            margin-right: 10px;
-            color: #a899bc;
-        }*/
+            display: inline-block;
+            width: 4px;
+            height: 16px;
+            background-color: var(--purple-main);
+            border-radius: 2px;
+        }
 
-        /* DATA DIRI LIST */
+        a, a:visited, a:active {
+            color: var(--purple-border);
+            text-decoration: none;
+            transition: color 0.2s ease, text-decoration 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--purple-main);
+            text-decoration: underline;
+        }
+
+        /* ==========================================================================
+           5. SHORT INTRO (KTP STYLE LIST)
+           ========================================================================== */
         .info-list {
             list-style: none;
             padding: 0;
             margin: 0;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .info-list li {
-            margin-bottom: 8px;
             display: flex;
+            align-items: flex-start;
+            background: var(--bg-body);
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(151, 126, 182, 0.15);
         }
 
         .info-list li strong {
-            color: #a899bc;
-            width: 90px;
+            color: var(--purple-light);
+            width: 100px;
             flex-shrink: 0;
         }
 
-        /* UNIVERSAL ITEM BUTTONS (Karakter, Game, Makanan, Lagu) */
+        /* ==========================================================================
+           6. ITEM GRID & BUTTON CARDS (CHARACTERS, GAMES, FOODS, SONGS)
+           ========================================================================== */
         .item-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 12px;
         }
 
         .item-btn {
-            background: #1a171d;
-            border: 0.1px solid #935cd8;
-            border-radius: 12px;
-            padding: 10px;
+            background: var(--bg-body);
+            border: 1px solid var(--purple-border);
+            border-radius: 10px;
+            padding: 12px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
             font-family: inherit;
             text-align: left;
+            color: inherit;
         }
 
         .item-btn:hover {
-            background: #28232d;
-            border-color: #935cd8;
+            background: rgba(147, 92, 216, 0.08);
+            border-color: var(--purple-main);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(147, 92, 216, 0.25);
         }
 
         .item-avatar {
-            width: 56px;
-            height: 56px;
+            width: 52px;
+            height: 52px;
             border-radius: 8px;
             object-fit: cover;
-            border: 0.1px solid #935cd8;
+            border: 1px solid var(--purple-main);
             flex-shrink: 0;
-            background-color: #28232d;
+            background-color: var(--bg-card);
         }
 
         .item-info {
@@ -166,44 +222,39 @@
         .item-title {
             font-weight: 900;
             font-size: 0.95rem;
-            color: #935cd8;
+            color: var(--purple-main);
             line-height: 1.2;
         }
 
         .item-subtitle {
             font-size: 0.8rem;
-            color: #a899bc;
+            color: var(--purple-light);
             font-weight: 400;
             line-height: 1.2;
         }
 
-        a, a:visited, a:active {
-             color: #977eb6;
-             text-decoration: none;
-             transition: color 0.2s ease;
-        }
-
-        a:hover {
-             color: #977eb6;
-             text-decoration: underline;
-        }
-
+        /* ==========================================================================
+           7. FOOTER
+           ========================================================================== */
         .footer {
             margin-top: 40px;
             text-align: center;
-            font-size: 0.75rem;
-            color: #a899bc;
-            border-top: 1px solid #977eb6;
-            padding-top: 20px;
+            font-size: 0.8rem;
+            color: var(--purple-light);
+            border-top: 1px dashed var(--purple-border);
+            padding-top: 22px;
+            line-height: 1.7;
         }
 
-        /* MODAL STYLING */
+        /* ==========================================================================
+           8. MODAL WINDOWS (STANDARD & SONG)
+           ========================================================================== */
         .modal-overlay {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(26, 23, 29, 0.8);
-            backdrop-filter: blur(5px);
+            background: rgba(26, 23, 29, 0.85);
+            backdrop-filter: blur(6px);
             justify-content: center;
             align-items: center;
             z-index: 1000;
@@ -211,21 +262,21 @@
         }
 
         .modal-content {
-            background: #28232d;
-            border: 1px solid #977eb6;
-            border-radius: 10px;
+            background: var(--bg-card);
+            border: 1px solid var(--purple-main);
+            border-radius: 12px;
             width: 100%;
-            max-width: 450px;
+            max-width: 480px;
             max-height: 85vh;
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
-            animation: modalFadeIn 0.3s ease;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
+            animation: modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
+            from { opacity: 0; transform: translateY(-12px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -233,91 +284,94 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
-            border-bottom: 1px solid #977eb6;
-            background: #1a171d;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--purple-border);
+            background: var(--bg-body);
             flex-shrink: 0;
         }
 
         .modal-header h3 {
             margin: 0;
-            color: #935cd8;
-            font-size: 1.2rem;
+            color: var(--purple-main);
+            font-size: 1.15rem;
+            font-weight: 900;
         }
 
         .close-btn {
             background: none;
             border: none;
-            color: #a899bc;
+            color: var(--purple-light);
             font-size: 1.5rem;
             cursor: pointer;
             line-height: 1;
-            transition: color 0.2s;
+            transition: color 0.2s ease;
         }
 
-        .close-btn:hover { color: #935cd8; }
+        .close-btn:hover { color: var(--purple-main); }
 
         .modal-body {
             padding: 20px;
             overflow-y: auto;
             scrollbar-width: thin;
-            scrollbar-color: #977eb6 #1a171d;
+            scrollbar-color: var(--purple-border) var(--bg-body);
         }
 
-        .modal-body::-webkit-scrollbar { width: 8px; }
-        .modal-body::-webkit-scrollbar-track { background: #1a171d; border-radius: 4px; }
-        .modal-body::-webkit-scrollbar-thumb { background: #977eb6; border-radius: 4px; }
-        .modal-body::-webkit-scrollbar-thumb:hover { background: #935cd8; }
+        .modal-body::-webkit-scrollbar { width: 6px; }
+        .modal-body::-webkit-scrollbar-track { background: var(--bg-body); }
+        .modal-body::-webkit-scrollbar-thumb { background: var(--purple-border); border-radius: 4px; }
+        .modal-body::-webkit-scrollbar-thumb:hover { background: var(--purple-main); }
 
         .modal-img {
             width: 100%;
             aspect-ratio: 16/9;
             object-fit: cover;
-            border-radius: 6px;
-            background: #1a171d;
-            border: 1px solid #977eb6;
-            margin-bottom: 15px;
+            border-radius: 8px;
+            background: var(--bg-body);
+            border: 1px solid var(--purple-border);
+            margin-bottom: 16px;
         }
 
         .song-modal-img {
             aspect-ratio: 1/1;
-            max-width: 250px;
-            margin: 0 auto 15px auto;
+            max-width: 220px;
+            margin: 0 auto 16px auto;
             display: block;
         }
 
         .modal-desc {
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             margin-bottom: 20px;
             word-wrap: break-word;
+            line-height: 1.65;
         }
 
         .song-meta {
-            background: #1a171d;
-            padding: 12px;
-            border-radius: 6px;
-            border-left: 3px solid #977eb6;
-            margin-bottom: 15px;
-            font-size: 0.85rem;
+            background: var(--bg-body);
+            padding: 12px 16px;
+            border-radius: 8px;
+            border-left: 3px solid var(--purple-main);
+            margin-bottom: 16px;
+            font-size: 0.88rem;
         }
 
         .song-meta span { display: block; margin-bottom: 4px; }
-        .song-meta strong { color: #935cd8; }
+        .song-meta span:last-child { margin-bottom: 0; }
+        .song-meta strong { color: var(--purple-main); }
 
         .action-link {
-            display: block; /* Akan dimanipulasi oleh JS */
+            display: block;
             text-align: center;
-            background: #935cd8;
-            color: #1a171d !important;
-            padding: 10px;
-            border-radius: 6px;
+            background: var(--purple-main);
+            color: var(--bg-body) !important;
+            padding: 11px;
+            border-radius: 8px;
             font-weight: bold;
-            transition: background 0.2s;
+            transition: background 0.2s ease;
             text-decoration: none !important;
         }
 
         .action-link:hover {
-            background: #a899bc;
+            background: var(--purple-light);
         }
     </style>
 </head>
@@ -408,7 +462,6 @@
     <section id="games" class="section">
         <h2>Favorite Games</h2>
         <div class="item-grid">
-            <!-- Hapus atribut data-link dan data-linktext agar tombol tidak muncul -->
             <button class="item-btn std-btn"
                 data-title="Free Fire"
                 data-img="/assets/autobiography/games/ff-banner.webp"
@@ -551,10 +604,8 @@
             <button class="close-btn" id="songClose">&times;</button>
         </div>
         <div class="modal-body">
-            <!-- Gambar cover album rasio 1:1 -->
             <img id="songImg" src="" alt="Album Cover" class="modal-img song-modal-img">
 
-            <!-- Metadata Lagu -->
             <div class="song-meta">
                 <span><strong>Artist:</strong> <span id="songArtist">Nama Artis</span></span>
                 <span><strong>Album:</strong> <span id="songAlbum">Nama Album</span></span>
@@ -578,19 +629,16 @@
             document.getElementById("stdImg").src = this.getAttribute("data-img");
             document.getElementById("stdDesc").innerHTML = this.getAttribute("data-desc");
 
-            // LOGIKA UNTUK MENYEMBUNYIKAN/MENAMPILKAN TOMBOL LINK
             const linkData = this.getAttribute("data-link");
             const linkTextData = this.getAttribute("data-linktext");
             const linkBtn = document.getElementById("stdLink");
-            
+
             if (linkData && linkTextData) {
-                // Jika atribut link dan teksnya ada (misal: di Favorite Characters)
                 linkBtn.href = linkData;
                 linkBtn.textContent = linkTextData;
-                linkBtn.style.display = "block"; // Tampilkan tombol
+                linkBtn.style.display = "block";
             } else {
-                // Jika tidak ada atribut link (misal: di Games & Foods)
-                linkBtn.style.display = "none"; // Sembunyikan tombol
+                linkBtn.style.display = "none";
             }
 
             stdModal.style.display = "flex";
@@ -621,7 +669,6 @@
 
     songClose.addEventListener("click", () => songModal.style.display = "none");
 
-    // Tutup modal jika area luar diklik (berlaku untuk kedua modal)
     window.addEventListener("click", function(event) {
         if (event.target === stdModal) stdModal.style.display = "none";
         if (event.target === songModal) songModal.style.display = "none";

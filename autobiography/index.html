@@ -93,11 +93,11 @@
             margin-bottom: 15px;
         }
 
-        h2::before {
-            content: "∙";
+        /*h2::before {
+            content: "";
             margin-right: 10px;
             color: #a899bc;
-        }
+        }*/
 
         /* DATA DIRI LIST */
         .info-list {
@@ -127,7 +127,7 @@
 
         .item-btn {
             background: #1a171d;
-            border: 1px solid #977eb6;
+            border: 0.1px solid #935cd8;
             border-radius: 12px;
             padding: 10px;
             display: flex;
@@ -151,7 +151,7 @@
             height: 56px;
             border-radius: 8px;
             object-fit: cover;
-            border: 2px solid #935cd8;
+            border: 0.1px solid #935cd8;
             flex-shrink: 0;
             background-color: #28232d;
         }
@@ -184,7 +184,7 @@
         }
 
         a:hover {
-             color: #935cd8;
+             color: #977eb6;
              text-decoration: underline;
         }
 
@@ -336,13 +336,14 @@
     <section id="about" class="section">
         <h2>Short Intro</h2>
         <ul class="info-list">
-            <li><strong>Nama</strong>: Arya Dewangga</li>
+            <li><strong>Name</strong>: Arya Dewangga</li>
             <li><strong>Alias</strong>: Setsuna Aruya / RexDeww / Rexon</li>
-            <li><strong>Zodiak</strong>: Aries</li>
+            <li><strong>Zodiac</strong>: Aries</li>
+            <li><strong>B-Day</strong>: April 18th</li>
             <li><strong>MBTI</strong>: ISTP (Introvert)</li>
             <li><strong>Sifat</strong>: Asocial, Fictophile</li>
-            <li><strong>Hobi</strong>: Gaming, Vibecoding</li>
-            <li><strong>Prinsip</strong>: Selalu mengutamakan kesetiaan dalam ranah cinta dan hobi.</li>
+            <li><strong>Hobby</strong>: Gaming, Vibecoding</li>
+            <li><strong>Comments</strong>: "Everything is futile. no matter how far you go, it's all in vain anyway."</li>
         </ul>
     </section>
 
@@ -419,9 +420,9 @@
                 </div>
             </button>
             <button class="item-btn std-btn"
-                data-title="Minecraft (Java 1.8.9, Java 1.12.2, Bedrock Mobile Any)"
+                data-title="Minecraft"
                 data-img="/assets/autobiography/games/mc-banner.webp"
-                data-desc="Veteran MCPE versi 1.12 btw, alasan aku suka dan main di versi itu di laptop karena...laptopku cuma kuat 2 versi itu anjay wkwkwk, itupun mentok pake Fabric atau Forge, lagian game jaman cilikan ku njirrr :D'">
+                data-desc="Veteran Minecraft: Pocket Edition v0.12 btw, alasan aku suka dan main di versi itu di laptop karena...laptopku cuma kuat 2 versi itu anjay wkwkwk, itupun mentok pake Fabric atau Forge, lagian game jaman cilikan ku njirrr :D'">
                 <img src="/assets/autobiography/games/mc-avatar.webp" alt="Game Icon" class="item-avatar">
                 <div class="item-info">
                   <span class="item-title">Minecraft</span>
@@ -478,11 +479,21 @@
             <button class="item-btn std-btn"
                 data-title="Mie Ayam"
                 data-img="/assets/autobiography/fnd/miayam-banner.webp"
-                data-desc="Makanan wong kalahan ini kujadikan favorit karena ya...aku pecundang, wong kalahan. selain karena aku suka mi, biasanya aku bakal nilai makanan ini dari kuahnya, tiap ku seruput pasti langsung keingat kalo aku luser TwT">
+                data-desc="Makanan kekalahan ini kujadikan favorit karena ya...aku pecundang, wong kalahan. selain karena aku suka mi, biasanya aku bakal nilai makanan ini dari kuahnya, tiap ku seruput pasti langsung keingat kalo aku luser TwT. biasanya aku konsumsi ini pas awal bulan bahkan akhir bulan.">
                 <img src="/assets/autobiography/fnd/miayam-avatar.webp" alt="Food Icon" class="item-avatar">
                 <div class="item-info">
                     <span class="item-title">Mie Ayam</span>
-                    <span class="item-subtitle">Makanan wong kalahan</span>
+                    <span class="item-subtitle">Seporsi kekalahan</span>
+                </div>
+            </button>
+            <button class="item-btn std-btn"
+                data-title="Ultramilk 1000mL"
+                data-img="/assets/autobiography/fnd/indomilk-banner.webp"
+                data-desc="Minuman ini adalah versi kemenangan bagiku, walaupun aku tau kemenangan hanyalah sementara, tapi sebisa mungkin aku syukuri wkwkw, biasanya aku beli/minum ini pas ngerasa menang misal gajian.">
+                <img src="/assets/autobiography/fnd/indomilk-avatar.webp" alt="Food Icon" class="item-avatar">
+                <div class="item-info">
+                    <span class="item-title">Ultramilk</span>
+                    <span class="item-subtitle">Seteguk kemenangan</span>
                 </div>
             </button>
         </div>

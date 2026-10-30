@@ -10,24 +10,18 @@ const diaryEntries = [
         title: "Fictophile: Origin",
         file: "01-ymsi.txt",
         codename: "ymsi",
-        type: "special",
-        date_created: "2026-10-17T09:00",
-        last_modified: "2026-10-25T01:00"
+        type: "special"
     },
     {
         title: "Fictophile: Clarification (README!)",
         file: "02-ymsi.txt",
         codename: "ymsi",
-        type: "special",
-        date_created: "2026-10-25T14:20",
-        last_modified: "2026-10-25T01:00"
+        type: "special"
     },
     {
         title: "Setia itu apo?",
         file: "02-sta.txt",
         codename: "sta",
-        type: "regular",
-        date_created: "2026-09-10T22:30",
-        last_modified: "2026-10-17T19:45"
+        type: "regular"
     }
 ];

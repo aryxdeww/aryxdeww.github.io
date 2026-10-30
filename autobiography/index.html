@@ -63,9 +63,9 @@
             display: flex;
             align-items: center;
             gap: 24px;
-            border-bottom: 1px dashed var(--purple-border);
-            margin-bottom: 30px;
-            padding-bottom: 24px;
+            /*border-bottom: 1px dashed var(--purple-border);*/
+            margin-bottom: 10px;
+            padding-bottom: 0px;
         }
 
         .profile-pic {
@@ -133,15 +133,37 @@
             border-radius: 2px;
         }
 
-        a, a:visited, a:active, a:hover {
-            color: #935cd8;
+        a, a:visited, a:active {
+            color: var(--purple-border);
             text-decoration: none;
             transition: color 0.2s ease, text-decoration 0.2s ease;
         }
 
+        a:hover {
+            color: var(--purple-main);
+            text-decoration: underline;
+        }
+
         /* ==========================================================================
-           5. SHORT INTRO (KTP STYLE LIST)
+           5. SHORT INTRO & BADGE TAGS
            ========================================================================== */
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .status-badge {
+            background: rgba(147, 92, 216, 0.12);
+            border: 1px solid var(--purple-main);
+            color: var(--purple-light);
+            font-size: 0.75rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
         .info-list {
             list-style: none;
             padding: 0;
@@ -168,7 +190,7 @@
         }
 
         /* ==========================================================================
-           6. ITEM GRID & BUTTON CARDS (CHARACTERS, GAMES, FOODS, SONGS)
+           6. ITEM GRID & BUTTON CARDS (UNIVERSAL)
            ========================================================================== */
         .item-grid {
             display: grid;
@@ -236,7 +258,7 @@
             text-align: center;
             font-size: 0.8rem;
             color: var(--purple-light);
-            border-top: 1px dashed var(--purple-border);
+            border-top: 1px solid var(--purple-border);
             padding-top: 22px;
             line-height: 1.7;
         }
@@ -383,7 +405,16 @@
     </header>
 
     <section id="about" class="section">
-        <h2 align="center">Short Intro</h2>
+        <h2>Short Intro</h2>
+
+        <!-- Status Badges -->
+        <div class="badge-container">
+            <span class="status-badge">🇮🇩 Central Java, Indonesia</span>
+            <span class="status-badge">🐧 Linux Enthusiast</span>
+            <span class="status-badge">💜 Shirasu Azusa Devotee</span>
+            <span class="status-badge">🎮 Gamer tipis-tipis</span>
+        </div>
+
         <ul class="info-list">
             <li><strong>Nama</strong>: Arya Dewangga</li>
             <li><strong>Alias</strong>: Setsuna Aruya / RexDeww / Rexon</li>
@@ -396,9 +427,67 @@
         </ul>
     </section>
 
-    <!-- SECTION: CHARACTERS -->
+    <!-- ============================================================================== -->
+    <!--                                                               SECTION: PROJECTS                                                                           -->
+    <!-- ============================================================================== -->
+    <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="item-grid">
+            <button class="item-btn std-btn"
+                data-title="Azusa-Cursor Theme"
+                data-img="/assets/autobiography/projects/azusa-cursor-banner.webp"
+                data-desc="Tema kursor Linux (X11) bertema Shirasu Azusa yang aku porting dan konversi secara manual dari format Windows (.ico / .ani) ke xcursorgen di Linux di bawah lisensi GPL-3.0."
+                data-link="https://github.com/aryxdeww/azusa-cursor"
+                data-linktext="Lihat di GitHub">
+                <img src="/assets/autobiography/projects/azusa-cursor-avatar.webp" alt="Azusa Cursor Icon" class="item-avatar">
+                <div class="item-info">
+                    <span class="item-title">Azusa-Cursor</span>
+                    <span class="item-subtitle">Linux X11 Cursor Theme</span>
+                </div>
+            </button>
+        </div>
+    </section>
+
+    <!-- ============================================================================== -->
+    <!--                                                      SECTION: MY GEAR & SETUP                                                                     -->
+    <!-- ============================================================================== -->
+    <section id="setup" class="section">
+        <h2>Gear 'n Setup</h2>
+        <div class="item-grid">
+            <button class="item-btn std-btn"
+                data-title="Asus X453MA"
+                data-img="/assets/autobiography/setup/laptop-banner.webp"
+                data-desc="&quot;Ingin menjadi laptop, namun user e ndlogok malah dipreteli&quot;. kira-kira begitu yang dikatakan laptopku jika itu bisa protes XD.<br>aku sengaja bikin laptopku gitu karena monitor bawaan laptop 14inch tuh udah dead pixel, mau ganti males juga karena sebelum nekat aku ada rencana rakit PC namun ga kesampaian. akhirnya laptop itu jadi korban kanibalisme wkwkw, mulai dari: monitor dicopot diganti monitor external 19inch via hdmi, keyboard kucopot buat sirkulasi udara pro max dan kupasang kipas dc 3000 RPM*3 biji wkwkwk jadi seolah-olah kek tower pc AKWOKAOWKOAWK<br><br>Buat yang kepo spek dan isinya:<br>
+                Model:  Asus X453MA<br>
+                Proc:   Intel Celeron N2840 @2GHz<br>
+                RAM:    DDR3L 8GB<br>
+                Storage: SSD 256GB + HDD 500GB<br>
+                OS:     Debian 13 Trixie + Tiny10 (Dualboot)<br><br>
+                nah kalo lu nanya kenapa aku masih betah pake laptop ginian di tahun ini, alasannya adalah aku belum mampu beli perangkat yang proper dan lebih milih pake yang ada dan dimaksimalin sampe batas potensinya, lagian oke aja sih pemakaianku ga berat-berat amat. semua tergantung pilot :D">
+                <img src="/assets/autobiography/setup/laptop-avatar.webp" alt="PC" class="item-avatar">
+                <div class="item-info">
+                    <span class="item-title">Asus X453MA</span>
+                    <span class="item-subtitle">PC</span>
+                </div>
+            </button>
+            <button class="item-btn std-btn"
+                data-title="(K)infinix Hot 60 Pro"
+                data-img="/assets/autobiography/setup/phone-banner.webp"
+                data-desc="Bukan HP impian tapi udah nemenin cukup lama dari Feb '26 lalu. FF rata kanan masih struggle btw.">
+                <img src="/assets/autobiography/setup/phone-avatar.webp" alt="HP" class="item-avatar">
+                <div class="item-info">
+                    <span class="item-title">(K)infinix Hot 60 Pro</span>
+                    <span class="item-subtitle">HP</span>
+                </div>
+            </button>
+        </div>
+    </section>
+
+    <!-- ============================================================================== -->
+    <!--                                                                  SECTION: FAV. CHARS                                                                     -->
+    <!-- ============================================================================== -->
     <section id="characters" class="section">
-        <h2 align="center">Favorite Characters</h2>
+        <h2>Favorite Characters</h2>
         <div class="item-grid">
             <button class="item-btn std-btn"
                 data-title="Shirasu Azusa"
@@ -453,9 +542,11 @@
         </div>
     </section>
 
-    <!-- SECTION: GAMES -->
+    <!-- ============================================================================== -->
+    <!--                                                                  SECTION: FAV.GAMES                                                                     -->
+    <!-- ============================================================================== -->
     <section id="games" class="section">
-        <h2 align="center">Favorite Games</h2>
+        <h2>Favorite Games</h2>
         <div class="item-grid">
             <button class="item-btn std-btn"
                 data-title="Free Fire"
@@ -520,9 +611,11 @@
         </div>
     </section>
 
-    <!-- SECTION: FOODS & DRINKS -->
+    <!-- ============================================================================== -->
+    <!--                                                      SECTION: FAV.FOODnDRINK                                                                     -->
+    <!-- ============================================================================== -->
     <section id="foods" class="section">
-        <h2 align="center">Favorite Foods & Drinks</h2>
+        <h2>Favorite Foods & Drinks</h2>
         <div class="item-grid">
             <button class="item-btn std-btn"
                 data-title="Mie Ayam"
@@ -547,9 +640,11 @@
         </div>
     </section>
 
-    <!-- SECTION: SONGS -->
+    <!-- ============================================================================== -->
+    <!--                                                                   SECTION: FAV.SONGS                                                                    -->
+    <!-- ============================================================================== -->
     <section id="songs" class="section">
-        <h2 align="center">Favorite Songs</h2>
+        <h2>Favorite Songs</h2>
         <div class="item-grid">
             <button class="item-btn song-btn"
                 data-title="It's Gonna Be Me"
@@ -568,12 +663,12 @@
     </section>
 
     <footer class="footer">
-        kamu udah baca sampe sini? anjay keren...<br>keknya kamu cocok jadi pengulik kisahku <a href="/diary">disini</a>.
+        kamu udah baca sampe sini? anjay keren...<br>keknya kamu bakal suka baca diary ku <a href="/diary">disini</a>.
     </footer>
 </div>
 
 <!-- =====================================
-     MODAL STANDAR (Karakter, Game, Makanan)
+     MODAL STANDAR (Karakter, Game, Makanan, Project, Gear)
      ===================================== -->
 <div id="standardModal" class="modal-overlay">
     <div class="modal-content">

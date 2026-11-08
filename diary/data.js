@@ -19,9 +19,15 @@ const diaryEntries = [
         type: "special"
     },
     {
-        title: "Setia itu apo?",
-        file: "02-sta.txt",
-        codename: "sta",
+        title: "Kemenangan sementara yang bermakna",
+        file: "03-ksyb.txt",
+        codename: "ksyb",
+        type: "regular"
+    },
+    {
+        title: "PLACEHOLDER WOKOAKWOAKW",
+        file: "00-placeholder.txt",
+        codename: "tempek",
         type: "regular"
     }
 ];

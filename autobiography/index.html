@@ -650,12 +650,35 @@
                 data-artist="*NSYNC"
                 data-album="No Strings Attached"
                 data-img="/assets/autobiography/songs/nsync-igbm-cover.webp"
-                data-notes="Lagu patah hati paling keren menurutku, lagu ini jadi saksi bisu perubahan 180° hidupku serta patwh hati pertamaku, big thanks untuk bro HB yang udah ngasih tau lagu se masterpis ini XD"
-                data-spotify="https://open.spotify.com/track/2AW37v0bDyuOzGP3XnmFuA?si=szifxtMxR-C8gZqaAv0PQQ&utm_source=copy-link">
+                data-notes="Lagu patah hati paling keren menurutku, lagu ini jadi saksi bisu perubahan 180° hidupku serta patwh hati pertamaku, big thanks untuk bro HB yang udah ngasih tau lagu se masterpis ini XD">
                 <img src="/assets/autobiography/songs/nsync-igbm-cover.webp" alt="Song Cover" class="item-avatar">
                 <div class="item-info">
                     <span class="item-title">It's Gonna Be Me</span>
                     <span class="item-subtitle">*NSYNC</span>
+                </div>
+            </button>
+            <button class="item-btn song-btn"
+                data-title="Paparazzi (Dubstep)"
+                data-artist="Alximo, Lady Gaga (Original Artist)"
+                data-album="-"
+                data-img="/assets/autobiography/songs/alximo-pprz-cover.webp"
+                data-notes="Alasan aku suka banget lagu ini karena atmosfer cewe obsesif nya ngena dan when yah gwe punya cewe yandere :(">
+                <img src="/assets/autobiography/songs/alximo-pprz-cover.webp" alt="Song Cover" class="item-avatar">
+                <div class="item-info">
+                    <span class="item-title">Paparazzi (Dubstep)</span>
+                    <span class="item-subtitle">Alximo</span>
+                </div>
+            </button>
+            <button class="item-btn song-btn"
+                data-title="Masquerade"
+                data-artist="Siouxxie Sixxsta"
+                data-album="-"
+                data-img="/assets/autobiography/songs/masquerade-cover.webp"
+                data-notes="Alasan aku suka banget lagu ini karena feel membunuh nya aku suka, aku psikontol tipis2">
+                <img src="/assets/autobiography/songs/masquerade-cover.webp" alt="Song Cover" class="item-avatar">
+                <div class="item-info">
+                    <span class="item-title">Masquerade</span>
+                    <span class="item-subtitle">Siouxxie Sixxsta</span>
                 </div>
             </button>
         </div>
@@ -701,7 +724,6 @@
             </div>
 
             <p id="songNotes" class="modal-desc">Notes lagu dari kamu.</p>
-            <a id="songSpotify" href="#" target="_blank" class="action-link">Dengerin lagu ini di Spotify</a>
         </div>
     </div>
 </div>
@@ -749,8 +771,6 @@
             document.getElementById("songArtist").textContent = this.getAttribute("data-artist");
             document.getElementById("songAlbum").textContent = this.getAttribute("data-album");
             document.getElementById("songNotes").innerHTML = this.getAttribute("data-notes");
-
-            document.getElementById("songSpotify").href = this.getAttribute("data-spotify");
 
             songModal.style.display = "flex";
         });

@@ -8,36 +8,34 @@
     <style>
         :root {
             --color-bg-page: #1a171d;
+            --color-bg-card: #28232d;
             --color-primary: #935cd8;
-            --color-text-muted: #977eb6;
+            --color-hover: #977eb6;
+            --color-text-muted: #a899bc;
             --color-text-main: #e4dcf0;
-            --color-border: rgba(168, 153, 188, 0.15);
+            --color-border: #3d3546;
         }
 
         /* Custom Scrollbar */
-        html, .modal-content { scrollbar-width: thin; scrollbar-color: var(--color-text-muted) transparent; }
+        html, .modal-content { scrollbar-width: thin; scrollbar-color: var(--color-border) var(--color-bg-page); }
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-track { background: var(--color-bg-page); }
         ::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
 
         body {
             background-color: var(--color-bg-page);
-            background-image: radial-gradient(circle at top left, rgba(147, 92, 216, 0.15), transparent 40%),
-                              radial-gradient(circle at bottom right, rgba(147, 92, 216, 0.05), transparent 40%);
             color: var(--color-text-main);
             font-family: 'Inter', sans-serif;
             margin: 0; padding: 40px 20px;
             display: flex; flex-direction: column; align-items: center;
             min-height: 100vh; box-sizing: border-box;
-            background-attachment: fixed;
         }
 
         header { text-align: center; margin-bottom: 35px; width: 100%; max-width: 750px; }
         h1 {
             color: var(--color-primary); margin: 0 0 10px 0;
             font-size: 2.2rem; font-weight: 700; letter-spacing: 1px;
-            text-shadow: 0 0 15px rgba(147, 92, 216, 0.4);
         }
         p.subtitle { margin: 0; color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.5; }
 
@@ -46,99 +44,100 @@
             gap: 20px; width: 100%; max-width: 750px;
         }
 
-        /* --- Regular Diary Card (Glassy) --- */
+        /* --- Regular Diary Card (Solid & Ringan) --- */
         .diary-card {
-            background: rgba(168, 153, 188, 0.04);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background-color: var(--color-bg-card);
             color: var(--color-text-main);
             border: 1px solid var(--color-border);
             padding: 20px 22px; border-radius: 14px;
             cursor: pointer; font-size: 1rem; font-weight: 600; text-align: left;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
             display: flex; align-items: center; justify-content: space-between;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
             font-family: inherit;
         }
         .diary-card:hover {
-            transform: translateY(-4px);
-            background: rgba(147, 92, 216, 0.1);
+            transform: translateY(-3px);
+            background-color: #2f2935;
             border-color: var(--color-primary);
-            box-shadow: 0 10px 25px rgba(147, 92, 216, 0.2);
             color: #ffffff;
         }
 
-        /* --- Special Diary Card (Mythic Tier - Clean Shimmer Aura) --- */
+        /* --- Special Diary Card (Solid + Bling Border & Shimmer) --- */
         .diary-card.special {
-            background: linear-gradient(135deg, rgba(147, 92, 216, 0.18) 0%, rgba(40, 35, 45, 0.6) 100%);
-            border: 1px solid rgba(147, 92, 216, 0.6);
+            background-color: var(--color-bg-card);
+            border: 1.5px solid var(--color-primary);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0 15px rgba(147, 92, 216, 0.2);
+            animation: blingBorder 2.6s ease-in-out infinite alternate;
         }
 
-        /* Efek Kilatan/Flash Kaca dari Kanan ke Kiri */
+        /* Kilatan Cahaya (Shimmer) menyapu dari kanan ke kiri */
         .diary-card.special::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -150%;
-            width: 100%;
+            left: 150%;
+            width: 80%;
             height: 100%;
             background: linear-gradient(
                 90deg,
                 transparent 0%,
-                rgba(147, 92, 216, 0.05) 30%,
-                rgba(255, 255, 255, 0.25) 50%,
-                rgba(147, 92, 216, 0.05) 70%,
+                rgba(147, 92, 216, 0.12) 35%,
+                rgba(228, 220, 240, 0.28) 50%,
+                rgba(147, 92, 216, 0.12) 65%,
                 transparent 100%
             );
             transform: skewX(-25deg);
-            animation: mythicShimmer 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+            animation: mythicShimmer 3.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
-        }
-
-        .diary-card.special::after {
-            display: none;
         }
 
         .diary-card.special:hover {
             transform: translateY(-4px);
-            border-color: var(--color-primary);
-            box-shadow: 0 0 25px rgba(147, 92, 216, 0.45);
+            background-color: #302937;
+            border-color: #b484f3;
+            box-shadow: 0 0 22px rgba(147, 92, 216, 0.65);
+        }
+
+        @keyframes blingBorder {
+            0% {
+                border-color: var(--color-primary);
+                box-shadow: 0 0 8px rgba(147, 92, 216, 0.25), inset 0 0 4px rgba(147, 92, 216, 0.1);
+            }
+            100% {
+                border-color: #c49bf8;
+                box-shadow: 0 0 20px rgba(147, 92, 216, 0.6), inset 0 0 8px rgba(147, 92, 216, 0.2);
+            }
         }
 
         @keyframes mythicShimmer {
             0% {
                 left: 150%;
             }
-            30%, 100% {
+            35%, 100% {
                 left: -150%;
             }
         }
 
-        /* --- Modal Window Glassy --- */
+        /* --- Modal Window Solid --- */
         .modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(26, 23, 29, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background-color: rgba(15, 13, 17, 0.85);
             justify-content: center; align-items: center;
             padding: 20px; box-sizing: border-box; z-index: 1000;
         }
 
         .modal-content {
-            background-color: rgba(40, 35, 45, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(147, 92, 216, 0.4);
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-primary);
             border-radius: 16px; padding: 30px; width: 100%; max-width: 680px; max-height: 82vh;
             overflow-y: auto; position: relative;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 25px rgba(147, 92, 216, 0.2);
-            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+            animation: slideUp 0.2s ease-out;
         }
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -158,24 +157,24 @@
 
         .diary-link {
             color: var(--color-primary); text-decoration: none; font-weight: 600;
-            border-bottom: 1px dashed var(--color-primary); transition: all 0.2s;
+            border-bottom: 1px dashed var(--color-primary); transition: color 0.2s, border-color 0.2s;
         }
         .diary-link:hover { color: #ffffff; border-bottom-style: solid; }
 
         .diary-img {
             max-width: 100%; border-radius: 10px; margin: 20px 0; display: block;
-            border: 1px solid var(--color-border); box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--color-border);
         }
 
         .diary-quote {
             margin: 15px 0; padding: 12px 18px;
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: var(--color-bg-page);
             border-left: 4px solid var(--color-primary);
             color: var(--color-text-muted); font-style: italic; border-radius: 0 10px 10px 0;
         }
 
         .diary-code {
-            background-color: rgba(0, 0, 0, 0.3); color: var(--color-primary);
+            background-color: var(--color-bg-page); color: var(--color-primary);
             padding: 3px 8px; border-radius: 6px; font-family: monospace;
             font-size: 0.9em; border: 1px solid var(--color-border);
         }
@@ -183,9 +182,9 @@
         .close-btn {
             position: absolute; top: 22px; right: 25px;
             color: var(--color-text-muted); font-size: 26px; font-weight: bold;
-            cursor: pointer; transition: 0.2s ease; line-height: 1;
+            cursor: pointer; transition: color 0.2s ease; line-height: 1;
         }
-        .close-btn:hover { color: var(--color-primary); transform: scale(1.1); }
+        .close-btn:hover { color: var(--color-primary); }
     </style>
 </head>
 <body>
@@ -218,37 +217,37 @@
         const closeBtn = document.querySelector('.close-btn');
 
         function parseMarkdown(text, codename) {
-    let parsed = text
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+            let parsed = text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
 
-    // Gambar: ![alt](filename)
-    parsed = parsed.replace(/!\[(.*?)\]\((.*?)\)/g, (match, alt, filename) => {
-        return `<img src="../assets/diary/gallery/${codename}/${filename}" alt="${alt}" class="diary-img">`;
-    });
+            // Gambar: ![alt](filename)
+            parsed = parsed.replace(/!\[(.*?)\]\((.*?)\)/g, (match, alt, filename) => {
+                return `<img src="../assets/diary/gallery/${codename}/${filename}" alt="${alt}" class="diary-img">`;
+            });
 
-    // Link: [teks](url)
-    parsed = parsed.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener" class="diary-link">$1</a>');
+            // Link: [teks](url)
+            parsed = parsed.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener" class="diary-link">$1</a>');
 
-    // Header (# , ## , ### )
-    parsed = parsed.replace(/^### (.*$)/gim, '<h3 class="diary-h3">$1</h3>');
-    parsed = parsed.replace(/^## (.*$)/gim, '<h2 class="diary-h2">$1</h2>');
-    parsed = parsed.replace(/^# (.*$)/gim, '<h1 class="diary-h1">$1</h1>');
+            // Header (# , ## , ### )
+            parsed = parsed.replace(/^### (.*$)/gim, '<h3 class="diary-h3">$1</h3>');
+            parsed = parsed.replace(/^## (.*$)/gim, '<h2 class="diary-h2">$1</h2>');
+            parsed = parsed.replace(/^# (.*$)/gim, '<h1 class="diary-h1">$1</h1>');
 
-    // Kutipan (> teks atau &gt; teks karena sudah di-escape HTML)
-    parsed = parsed.replace(/^\s*(?:&gt;|>)\s*(.*$)/gim, '<blockquote class="diary-quote">$1</blockquote>');
+            // Kutipan (> teks atau &gt; teks)
+            parsed = parsed.replace(/^\s*(?:&gt;|>)\s*(.*$)/gim, '<blockquote class="diary-quote">$1</blockquote>');
 
-    // Kode Inline (`kode`)
-    parsed = parsed.replace(/`([^`]+)`/g, '<code class="diary-code">$1</code>');
+            // Kode Inline (`kode`)
+            parsed = parsed.replace(/`([^`]+)`/g, '<code class="diary-code">$1</code>');
 
-    // Formatting Teks: Underline, Bold, Italic
-    parsed = parsed.replace(/\+\+(.*?)\+\+/g, '<u>$1</u>');
-    parsed = parsed.replace(/(\*\*|__)(.*?)\1/g, '<strong>$2</strong>');
-    parsed = parsed.replace(/(\*|_)(.*?)\1/g, '<em>$2</em>');
+            // Formatting Teks: Underline, Bold, Italic
+            parsed = parsed.replace(/\+\+(.*?)\+\+/g, '<u>$1</u>');
+            parsed = parsed.replace(/(\*\*|__)(.*?)\1/g, '<strong>$2</strong>');
+            parsed = parsed.replace(/(\*|_)(.*?)\1/g, '<em>$2</em>');
 
-    return parsed;
-}
+            return parsed;
+        }
 
         function renderButtons(entries) {
             container.innerHTML = '';

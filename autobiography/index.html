@@ -9,12 +9,12 @@
     <style>
         :root {
             --color-bg-page: #1a171d;
-            --color-bg-card: rgba(40, 35, 45, 0.65); /* Glassy #28232d */
+            --color-bg-card: #28232d;
             --color-primary: #935cd8;
             --color-hover: #977eb6;
             --color-text-muted: #a899bc;
             --color-text-main: #d4d4d4;
-            --color-border: rgba(168, 153, 188, 0.15);
+            --color-border: #3d3546;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,68 +24,174 @@
             font-weight: 400;
             line-height: 1.6;
             background-color: var(--color-bg-page);
-            background-image: radial-gradient(circle at top right, rgba(147, 92, 216, 0.15), transparent 40%),
-                              radial-gradient(circle at bottom left, rgba(147, 92, 216, 0.05), transparent 40%);
             color: var(--color-text-main);
             display: flex;
             justify-content: center;
             min-height: 100vh;
             padding: 40px 15px;
-            background-attachment: fixed;
         }
 
         .main-wrapper {
             width: 100%;
             max-width: 740px;
-            background: var(--color-bg-card);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background-color: var(--color-bg-card);
             padding: 35px;
             border-radius: 20px;
             border: 1px solid var(--color-border);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .section { margin-bottom: 35px; }
 
-        .header {
+        /* ==========================================================================
+           HEADER (DISCORD PROFILE STYLE)
+           ========================================================================== */
+        .discord-header {
+            margin-bottom: 30px;
+        }
+
+        .profile-banner {
+            margin: -35px -35px 0 -35px;
+            height: 165px;
+            background-color: #211d26;
+            border-bottom: 1px solid var(--color-border);
+            overflow: hidden;
+        }
+
+        .banner-pic {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .header-top-row {
             display: flex;
-            align-items: center;
-            gap: 24px;
-            margin-bottom: 25px;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 12px;
+            margin-top: -48px;
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 2;
         }
 
         .profile-pic {
-            width: 95px; height: 95px;
+            width: 96px;
+            height: 96px;
             border-radius: 50%;
-            border: 2px solid var(--color-primary);
-            box-shadow: 0 0 20px rgba(147, 92, 216, 0.2);
+            border: 5px solid var(--color-bg-card);
+            box-shadow: 0 0 0 2px var(--color-primary);
+            background-color: var(--color-bg-card);
             object-fit: cover;
             flex-shrink: 0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.25s ease;
         }
+
         .profile-pic:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(147, 92, 216, 0.4);
+            transform: scale(1.04);
         }
 
-        .header-text { display: flex; flex-direction: column; }
-        .header h1 {
+        .discord-badge-pill {
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 4px;
+            background-color: var(--color-bg-page);
+            border: 1px solid var(--color-border);
+            padding: 4px 8px;
+            border-radius: 12px;
+        }
+
+        .badge-btn {
+            background: transparent;
+            border: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .badge-btn:hover {
+            background-color: #28232d;
+            transform: scale(1.15);
+        }
+
+        .badge-btn img {
+            width: 15px;
+            height: 15px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-text h1 {
             color: var(--color-primary);
-            font-size: 2rem; font-weight: 900; letter-spacing: 1px; line-height: 1.1;
+            font-size: 1.75rem;
+            font-weight: 900;
+            letter-spacing: 0.8px;
+            line-height: 1.15;
         }
-        .aka-text {
-            font-size: 0.75rem; color: var(--color-text-muted);
-            margin: 4px 0 8px 0; font-weight: 500;
-        }
-        .header p { font-size: 0.9rem; color: var(--color-text-main); }
 
+        .aka-text {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            margin-top: 2px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .header-bio {
+            font-size: 0.9rem;
+            color: var(--color-text-main);
+            background-color: var(--color-bg-page);
+            border: 1px solid var(--color-border);
+            padding: 10px 14px;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 520px) {
+            .main-wrapper {
+                padding: 24px;
+            }
+            .profile-banner {
+                margin: -24px -24px 0 -24px;
+                height: 125px;
+            }
+            .header-top-row {
+                margin-top: -40px;
+            }
+            .profile-pic {
+                width: 82px;
+                height: 82px;
+                border-width: 4px;
+            }
+            .header-text h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* ==========================================================================
+           SECTIONS & CONTENT
+           ========================================================================== */
         h2 {
             font-size: 1.15rem; color: var(--color-primary);
             display: flex; align-items: center; gap: 10px;
@@ -98,18 +204,8 @@
             background-color: var(--color-primary); border-radius: 2px;
         }
 
-        a { color: var(--color-hover); text-decoration: none; transition: 0.2s ease; }
+        a { color: var(--color-hover); text-decoration: none; transition: color 0.2s ease; }
         a:hover { color: var(--color-primary); text-decoration: underline; }
-
-        .badge-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-        .status-badge {
-            background: rgba(147, 92, 216, 0.1);
-            border: 1px solid rgba(147, 92, 216, 0.3);
-            color: var(--color-hover);
-            font-size: 0.75rem; padding: 4px 12px;
-            border-radius: 20px; font-weight: 700;
-            backdrop-filter: blur(4px);
-        }
 
         .info-list {
             list-style: none; padding: 0; margin: 0; font-size: 0.92rem;
@@ -117,7 +213,7 @@
         }
         .info-list li {
             display: flex; align-items: flex-start;
-            background: rgba(0, 0, 0, 0.15);
+            background-color: var(--color-bg-page);
             padding: 10px 14px; border-radius: 10px;
             border: 1px solid var(--color-border);
         }
@@ -128,25 +224,24 @@
         }
 
         .item-btn {
-            background: rgba(168, 153, 188, 0.03);
-            backdrop-filter: blur(8px);
+            background-color: var(--color-bg-page);
             border: 1px solid var(--color-border);
             border-radius: 12px; padding: 12px;
             display: flex; align-items: center; gap: 14px;
-            cursor: pointer; transition: all 0.3s ease;
+            cursor: pointer; transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
             font-family: inherit; text-align: left; color: inherit;
         }
         .item-btn:hover {
-            background: rgba(147, 92, 216, 0.1);
+            background-color: #221e27;
             border-color: var(--color-primary);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(147, 92, 216, 0.15);
+            transform: translateY(-2px);
         }
 
         .item-avatar {
             width: 52px; height: 52px; border-radius: 8px;
             object-fit: cover; border: 1px solid var(--color-border);
             flex-shrink: 0;
+            background-color: var(--color-bg-card);
         }
         .item-btn:hover .item-avatar { border-color: var(--color-primary); }
 
@@ -160,60 +255,61 @@
             padding-top: 22px; line-height: 1.7;
         }
 
-        /* MODAL GLASSY */
+        /* MODAL SOLID */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(26, 23, 29, 0.7);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background-color: rgba(15, 13, 17, 0.85);
             justify-content: center; align-items: center; z-index: 1000; padding: 20px;
         }
         .modal-content {
-            background: rgba(40, 35, 45, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(147, 92, 216, 0.4);
+            background-color: var(--color-bg-card);
+            border: 1px solid var(--color-primary);
             border-radius: 16px; width: 100%; max-width: 480px; max-height: 85vh;
             display: flex; flex-direction: column; overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(147, 92, 216, 0.15);
-            animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+            animation: modalFadeIn 0.2s ease-out;
+        }
+
+        .badge-modal-content {
+            max-width: 360px;
         }
 
         @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(20px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .modal-header {
             display: flex; justify-content: space-between; align-items: center;
             padding: 18px 20px; border-bottom: 1px solid var(--color-border);
-            background: rgba(0, 0, 0, 0.2); flex-shrink: 0;
+            background-color: var(--color-bg-page); flex-shrink: 0;
         }
         .modal-header h3 { margin: 0; color: var(--color-primary); font-size: 1.15rem; font-weight: 900; }
         .close-btn {
             background: none; border: none; color: var(--color-text-muted);
-            font-size: 1.5rem; cursor: pointer; line-height: 1; transition: 0.2s ease;
+            font-size: 1.5rem; cursor: pointer; line-height: 1; transition: color 0.2s ease;
         }
-        .close-btn:hover { color: var(--color-primary); transform: scale(1.1); }
+        .close-btn:hover { color: var(--color-primary); }
 
         .modal-body {
             padding: 20px; overflow-y: auto;
-            scrollbar-width: thin; scrollbar-color: var(--color-border) transparent;
+            scrollbar-width: thin; scrollbar-color: var(--color-border) var(--color-bg-card);
         }
         .modal-body::-webkit-scrollbar { width: 6px; }
-        .modal-body::-webkit-scrollbar-track { background: transparent; }
+        .modal-body::-webkit-scrollbar-track { background: var(--color-bg-card); }
         .modal-body::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
 
         .modal-img {
             width: 100%; aspect-ratio: 16/9; object-fit: cover;
             border-radius: 10px; border: 1px solid var(--color-border);
-            margin-bottom: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 16px; background-color: var(--color-bg-page);
         }
         .song-modal-img { aspect-ratio: 1/1; max-width: 220px; margin: 0 auto 16px auto; display: block; }
         .modal-desc { font-size: 0.92rem; margin-bottom: 20px; line-height: 1.65; }
+        .badge-modal-subtitle { font-size: 0.92rem; color: var(--color-text-main); line-height: 1.6; margin: 0; }
 
         .song-meta {
-            background: rgba(0, 0, 0, 0.2);
+            background-color: var(--color-bg-page);
             padding: 12px 16px; border-radius: 10px;
             border-left: 3px solid var(--color-primary);
             margin-bottom: 16px; font-size: 0.88rem;
@@ -224,13 +320,12 @@
 
         .action-link {
             display: block; text-align: center;
-            background: var(--color-primary); color: #fff !important;
+            background-color: var(--color-primary); color: #ffffff !important;
             padding: 12px; border-radius: 10px; font-weight: bold;
-            transition: all 0.3s ease; text-decoration: none !important;
+            transition: background-color 0.2s ease, transform 0.2s ease; text-decoration: none !important;
         }
         .action-link:hover {
-            background: var(--color-hover);
-            box-shadow: 0 6px 15px rgba(147, 92, 216, 0.3);
+            background-color: var(--color-hover);
             transform: translateY(-2px);
         }
     </style>
@@ -238,23 +333,40 @@
 <body>
 
 <div class="main-wrapper">
-    <header class="header">
-        <img src="../assets/autobiography/arya.webp" alt="Profile Picture" class="profile-pic">
+    <header class="discord-header">
+        <div class="profile-banner">
+            <img src="../assets/autobiography/banner.webp" alt="Profile Banner" class="banner-pic">
+        </div>
+
+        <div class="header-top-row">
+            <img src="../assets/autobiography/arya.webp" alt="Profile Picture" class="profile-pic">
+
+            <!-- Container Badge Icon-Only (Bisa diisi emoji maupun tag <img>) -->
+            <div class="discord-badge-pill">
+                <button class="badge-btn"
+                    data-title="Linux Enthusiast"
+                    data-subtitle="Pengguna dan pengoprek sistem operasi Linux ringan."
+                    aria-label="Linux Enthusiast">🐧</button>
+                <button class="badge-btn"
+                    data-title="Fictophilia"
+                    data-subtitle="Mulai ngewaifuin Shirasu Azusa sejak 2023, dan menjadi fictophilia di tahun yang sama."
+                    aria-label="Fictophilia">💜</button>
+                <button class="badge-btn"
+                    data-title="Gamer Tipis-Tipis"
+                    data-subtitle="Penikmat game klasik, FPS, dan strategi."
+                    aria-label="Gamer Tipis-Tipis">🎮</button>
+            </div>
+        </div>
+
         <div class="header-text">
             <h1>ARYXDEWW</h1>
             <span class="aka-text">A.K.A Arya Dewangga H.</span>
-            <p>pecundang yang mungkin anda kenal.</p>
+            <p class="header-bio">pecundang yang mungkin anda kenal.</p>
         </div>
     </header>
 
     <section id="about" class="section">
         <h2>Short Intro</h2>
-        <!--<div class="badge-container">
-            <span class="status-badge">🇮🇩 Central Java, Indonesia</span>
-            <span class="status-badge">🐧 Linux Enthusiast</span>
-            <span class="status-badge">💜 Shirasu Azusa Devotee</span>
-            <span class="status-badge">🎮 Gamer tipis-tipis</span>
-        </div>-->
         <ul class="info-list">
             <li><strong>Nama</strong>: Arya Dewangga</li>
             <li><strong>Alias</strong>: Setsuna Aruya / Shirasu Aruya / RexDeww / Rexon / ailovaz</li>
@@ -519,6 +631,19 @@
     </footer>
 </div>
 
+<!-- MODAL KHUSUS BADGE (Title + Subtitle) -->
+<div id="badgeModal" class="modal-overlay">
+    <div class="modal-content badge-modal-content">
+        <div class="modal-header">
+            <h3 id="badgeTitle">Judul Badge</h3>
+            <button class="close-btn" id="badgeClose">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p id="badgeSubtitle" class="badge-modal-subtitle">Keterangan badge.</p>
+        </div>
+    </div>
+</div>
+
 <!-- MODAL STANDAR -->
 <div id="standardModal" class="modal-overlay">
     <div class="modal-content">
@@ -553,6 +678,22 @@
 </div>
 
 <script>
+    // --- SETUP MODAL BADGE ---
+    const badgeModal = document.getElementById("badgeModal");
+    const badgeClose = document.getElementById("badgeClose");
+    const badgeButtons = document.querySelectorAll(".badge-btn");
+
+    badgeButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            document.getElementById("badgeTitle").textContent = this.getAttribute("data-title");
+            document.getElementById("badgeSubtitle").textContent = this.getAttribute("data-subtitle");
+            badgeModal.style.display = "flex";
+        });
+    });
+
+    badgeClose.addEventListener("click", () => badgeModal.style.display = "none");
+
+    // --- SETUP MODAL STANDAR ---
     const stdModal = document.getElementById("standardModal");
     const stdClose = document.getElementById("stdClose");
     const stdButtons = document.querySelectorAll(".std-btn");
@@ -581,6 +722,7 @@
 
     stdClose.addEventListener("click", () => stdModal.style.display = "none");
 
+    // --- SETUP MODAL LAGU ---
     const songModal = document.getElementById("songModal");
     const songClose = document.getElementById("songClose");
     const songButtons = document.querySelectorAll(".song-btn");
@@ -601,13 +743,14 @@
     songClose.addEventListener("click", () => songModal.style.display = "none");
 
     window.addEventListener("click", function(event) {
+        if (event.target === badgeModal) badgeModal.style.display = "none";
         if (event.target === stdModal) stdModal.style.display = "none";
         if (event.target === songModal) songModal.style.display = "none";
     });
 
-    // Tambahan: Close pake tombol Escape
     window.addEventListener("keydown", function(e) {
         if (e.key === "Escape") {
+            badgeModal.style.display = "none";
             stdModal.style.display = "none";
             songModal.style.display = "none";
         }

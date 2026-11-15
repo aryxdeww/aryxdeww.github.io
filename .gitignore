@@ -1,3 +1,6 @@
-/autobiography/index-autobiography.html
-/diary/index-diary.html
-/assets/diary/text/00-placeholder.txt
+/autobiography
+/autobiography/*
+/diary
+/diary/*
+/index-exper.html
+/index-old.html

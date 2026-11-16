@@ -7,6 +7,12 @@
 
 const diaryEntries = [
     {
+        title: "Mengenai title ku",
+        file: "00-mtk.txt",
+        codename: "mtk",
+        type: "regular"
+    },
+    {
         title: "Fictophile: Origin",
         file: "01-ymsi.txt",
         codename: "ymsi",
@@ -22,12 +28,6 @@ const diaryEntries = [
         title: "Kemenangan sementara yang bermakna",
         file: "03-ksyb.txt",
         codename: "ksyb",
-        type: "regular"
-    },
-    {
-        title: "PLACEHOLDER WOKOAKWOAKW",
-        file: "00-placeholder.txt",
-        codename: "tempek",
         type: "regular"
     }
 ];

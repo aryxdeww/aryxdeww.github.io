@@ -1,27 +1,22 @@
-# aryxdeww.github.io
+# ARYXDEWW's Autobiography 'N Diary sites
+selamat datang user yang sampai lihat repoku, tujuan asliku membangun situs ini sebagai "surat wasiat" setelah aku tiada, untuk klarifikasi sebenarnya aku membangun ini **dengan bantuan AI ~60%**, ga begitu guna sih tapi semoga kisahku bisa menginspirasi kalian. terimakasih telah membaca ^^
+- ARYXDEWW, 2026.
 
-Personal space, profile, and digital diary of Setsuna Aruya (aryxdeww). Built with pure HTML/CSS/JS and hosted directly on GitHub Pages.
-
-## Live Site
+## Link situs
 [https://aryxdeww.github.io](https://aryxdeww.github.io)
 
-## Navigation & Features
-- **`/` (Profile Card):** Halaman *landing page* paling awal. Menampilkan profile card minimalis sebagai perkenalan.
-- **`/autobiography/`:** Direktori autobiografi lengkap yang menceritakan background story-ku (biasanya diakses setelah melihat profile card).
-- **`/diary/`:** Ruang personal. Tempat naruh semua unek-unek, pikiran, dan galeri memori.
+## Penjelasan section
+- **`/autobiography/ (section: autobiography)`:** Direktori autobiografi lengkap yang menceritakan background story-ku
+- **`/diary/ (section: diary)`:** Ruang personal. Tempat naruh semua unek-unek, pikiran, dan galeri memori.
 
-## Repository Structure
+## Peta repo
 
 ```text
 aryxdeww.github.io/
 ├── assets/
-│   ├── autobiography/   # Kumpulan aset webp (avatar & banner Karakter/Personal)
-│   ├── diary/           # Aset gambar galeri dan teks unek-unek
-│   └── main/            # Aset utama untuk landing page
-├── autobiography/
-│   └── index.html       # Clean routing untuk /autobiography
-├── diary/
-│   ├── data.js          # Skrip penyimpan entri data diary
-│   └── index.html       # Clean routing untuk /diary
-├── index.html           # Entry point (Profile Card)
+│   ├── autobiography/   # Aset media section: autobiography
+│   ├── diary/           # Aset media dan isi teks section: diary
+│   └── main/            # Usang
+├── index.html           # Situs utama (berisi autobiography dan diary)
+├── data.js              # Skrip entri section: diary
 └── README.md

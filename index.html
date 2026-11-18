@@ -1092,7 +1092,7 @@
         </section>
 
         <footer class="footer">
-            Last update: 18 Nov 2026, 11:10PM
+            Last update: 18 Nov 2026, 11:21PM
         </footer>
     </div>
 
@@ -1190,7 +1190,6 @@
     const viewAutobiography = document.getElementById("viewAutobiography");
     const viewDiary = document.getElementById("viewDiary");
     const navOptions = document.querySelectorAll(".nav-option");
-    const switchToDiaryBtn = document.getElementById("switchToDiaryBtn");
 
     function switchDirectory(target) {
         const isDiary = target === "diary";
@@ -1221,7 +1220,6 @@
         });
     });
 
-    switchToDiaryBtn.addEventListener("click", () => switchDirectory("diary"));
 
     document.addEventListener("click", (e) => {
         if (!navDropdown.contains(e.target) && e.target !== hamburgBtn) {

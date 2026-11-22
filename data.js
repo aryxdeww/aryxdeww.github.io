@@ -6,10 +6,30 @@
 // - Aryok 2026
 
 const diaryEntries = [
+
+
     {
-        title: "Mengenai title ku",
+        title: "Keinginanku sebelum atau sesudah diriku tiada",
+        file: "05-deadwish.txt",
+        codename: "deadwish",
+        type: "special"
+    },
+    {
+        title: "Mungkin, karma itu nyata.",
+        file: "04-mkit.txt",
+        codename: "mkit",
+        type: "regular"
+    },
+    {
+        title: "Mengenai julukan fiktif ku",
         file: "00-mtk.txt",
         codename: "mtk",
+        type: "regular"
+    },
+    {
+        title: "Soal percintaan",
+        file: "03-sp.txt",
+        codename: "sp",
         type: "regular"
     },
     {
@@ -23,11 +43,5 @@ const diaryEntries = [
         file: "02-ymsi.txt",
         codename: "ymsi",
         type: "special"
-    },
-    {
-        title: "Kemenangan sementara yang bermakna",
-        file: "03-ksyb.txt",
-        codename: "ksyb",
-        type: "regular"
     }
 ];

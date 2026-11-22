@@ -801,12 +801,12 @@
             <ul class="info-list">
                 <li><strong>Name</strong>: Arya Dewangga</li>
                 <li><strong>Aliases</strong>: Setsuna Aruya / RexDeww / Rexon</li>
-                <li><strong>Title</strong>: "The Midnight Commander"; "The Fragile Knight"</li>
+                <!--<li><strong>Title</strong>: "The Midnight Commander"; "The Fragile Knight"</li>-->
                 <li><strong>Zodiac</strong>: Aries</li>
                 <li><strong>B-Day</strong>: April 18th</li>
                 <li><strong>MBTI</strong>: INFP-T</li>
                 <li><strong>Personality</strong>: Introvert, Asocial, Fictophile</li>
-                <li><strong>Hobby</strong>: Gaming, Vibecoding</li>
+                <li><strong>Hobby</strong>: Gaming, Vibecoding (metode jaman purbakala)</li>
             </ul>
         </section>
 
@@ -869,7 +869,7 @@
                 <button class="item-btn std-btn"
                     data-title="Shirasu Azusa"
                     data-img="assets/autobiography/chars/azusa-banner.webp"
-                    data-desc="Mba-mba yang punya julukan &quot;The Ice Queen of Trinity&quot; yang merupakan anggota Make-Up Work Club serta murid dari Trinity General School di <a href='https://bluearchive.wiki/wiki/Main_Page' target='_blank' rel='noopener'>Blue Archive</a> adalah salah satu karakter favorit yang aku cintai selamanya dengan sangat setia melebihi apapun yang juga kujadikan istri karakter fiksi serta yang menjadi alasan kenapa aku jadi <a href='https://www.treatmyocd.com/blog/fictosexuality' target='_blank' rel='noopener'>fictophilia</a> sampai detik ini hehe.<br><br>Karakter ini aku jadikan karakter spesial di hidupku serta dia ada dan kusinggung di situs diary ku berjudul:<br>
+                    data-desc="Mba-mba yang punya julukan &quot;The Ice Queen of Trinity&quot; yang merupakan anggota Make-Up Work Club serta murid dari Trinity General School di <a href='https://bluearchive.wiki/wiki/Main_Page' target='_blank' rel='noopener'>Blue Archive</a> adalah salah satu karakter favorit yang aku cintai selamanya dengan sangat setia melebihi apapun yang juga kujadikan istri karakter fiksi serta yang menjadi alasan kenapa aku jadi <a href='https://www.treatmyocd.com/blog/fictosexuality' target='_blank' rel='noopener'>fictophilia</a>.<br><br>Karakter ini aku jadikan karakter spesial di hidupku serta dia ada dan kusinggung di situs diary ku berjudul:<br>
                     1. &quot;Fictophile: Clarification (README!)&quot;<br>
                     2. &quot;Fictophile: Origin&quot;, yang bisa kalian baca lewat menu direktori ~/DIARY."
                     data-link="https://bluearchive.fandom.com/wiki/Shirasu_Azusa"
@@ -1308,21 +1308,24 @@
             return `<img src="assets/diary/gallery/${codename}/${filename}" alt="${alt}" class="diary-img">`;
         });
 
-        // Link: [teks](url)
+        // Link: "[teks](url)"
         parsed = parsed.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener" class="diary-link">$1</a>');
 
-        // Header (# , ## , ### )
+        // Header
+        //"# text" (h1 + ada garisnya, cocok buat judul bab),
+        //"## text" (h2, cocok buat judul sub bab),
+        //"### text" (h3, cocok buat penegasan ulang)
         parsed = parsed.replace(/^### (.*$)/gim, '<h3 class="diary-h3">$1</h3>');
         parsed = parsed.replace(/^## (.*$)/gim, '<h2 class="diary-h2">$1</h2>');
         parsed = parsed.replace(/^# (.*$)/gim, '<h1 class="diary-h1">$1</h1>');
 
-        // Kutipan (> teks atau &gt; teks)
+        // Kutipan "> text" / "&gt; text" (buat notes)
         parsed = parsed.replace(/^\s*(?:&gt;|>)\s*(.*$)/gim, '<blockquote class="diary-quote">$1</blockquote>');
 
-        // Kode Inline (`kode`)
+        // Kode Inline "`kode`"
         parsed = parsed.replace(/`([^`]+)`/g, '<code class="diary-code">$1</code>');
 
-        // Formatting Teks: Underline, Bold, Italic
+        // Formatting Teks: Underline (++text++), Bold (**text**), Italic (*text*)
         parsed = parsed.replace(/\+\+(.*?)\+\+/g, '<u>$1</u>');
         parsed = parsed.replace(/(\*\*|__)(.*?)\1/g, '<strong>$2</strong>');
         parsed = parsed.replace(/(\*|_)(.*?)\1/g, '<em>$2</em>');

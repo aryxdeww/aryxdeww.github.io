@@ -859,7 +859,7 @@
         </section>
 
         <footer class="footer">
-            Last update: 23 Nov 2026
+            <i>ilysm4e, Shirasu Azusa.</i>
         </footer>
     </div>
 
@@ -946,7 +946,7 @@
      ★ [EXTERNAL DATA SOURCES] ★
      ========================================================================== -->
 <script src="/autobio-data.js"></script>
-<script src="/data.js"></script>
+<script src="/diary-data.js"></script>
 
 <script>
     /* ==========================================================================
@@ -1031,8 +1031,22 @@
         parsed = parsed.replace(/^## (.*$)\r?\n?/gim, '<h2 class="md-h2">$1</h2>');
         parsed = parsed.replace(/^# (.*$)\r?\n?/gim, '<h1 class="md-h1">$1</h1>');
 
-        // Kutipan (> teks)
-        parsed = parsed.replace(/^\s*(?:&gt;|>)\s*(.*$)\r?\n?/gim, '<blockquote class="md-quote">$1</blockquote>');
+        // Blok Kutipan Multi-Baris: >>> beberapa baris <<< atau >>> beberapa baris >>>
+        parsed = parsed.replace(/(?:&gt;|>){3}(?:\r?\n)?([\s\S]*?)(?:\r?\n)?(?:&lt;|<|&gt;|>){3}(?:\r?\n)?/g, (match, quote) => {
+            return `<blockquote class="md-quote">${quote}</blockquote>`;
+        });
+
+
+        // Kutipan Berurutan dengan (> teks) digabung jadi satu kotak utuh
+        parsed = parsed.replace(/(?:^\s*(?:&gt;|>)\s?.*(?:\r?\n|$))+/gim, (block) => {
+            const cleanLines = block
+                .replace(/\r?\n$/, "")
+                .split(/\r?\n/)
+                .map(line => line.replace(/^\s*(?:&gt;|>)\s?/, ""))
+                .join("\n");
+            return `<blockquote class="md-quote">${cleanLines}</blockquote>`;
+        });
+
 
         // Kode Inline Satu Baris (`kode`)
         parsed = parsed.replace(/`([^`\r\n]+)`/g, (match, code) => stashToken(`<code class="md-code">${code}</code>`));

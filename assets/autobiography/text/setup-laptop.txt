@@ -1,0 +1,11 @@
+*"Ingin menjadi laptop, namun user e ndlogok malah dipreteli"*, kira-kira begitu yang dikatakan laptopku jika itu bisa protes XD. aku sengaja bikin laptopku gitu karena monitor bawaan laptop 14inch tuh udah dead pixel, mau ganti males juga karena sebelum nekat aku ada rencana rakit PC namun ga kesampaian. akhirnya laptop itu jadi korban kanibalisme wkwkw, mulai dari: monitor dicopot diganti monitor external 19inch via hdmi, keyboard kucopot buat sirkulasi udara pro max dan kupasang kipas dc 3000 RPM*3 biji wkwkwk jadi seolah-olah kek tower pc AKWOKAOWKOAWK
+
+Buat yang kepo spek dan isinya:
+```
+Model:      Asus X453MA
+Proc:       Intel Celeron N2840 @2GHz
+RAM:        DDR3L 8GB
+Storage:    SSD 256GB + HDD 500GB
+OS:         Debian 13 Trixie + Tiny10 (Dualboot)```
+
+nah kalo lu nanya kenapa aku masih betah pake laptop ginian di tahun ini, alasannya adalah aku belum mampu beli perangkat yang proper dan lebih milih pake yang ada dan dimaksimalin sampe batas potensinya, lagian oke aja sih pemakaianku ga berat-berat amat. semua tergantung pilot :D

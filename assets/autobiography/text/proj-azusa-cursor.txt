@@ -1,0 +1,1 @@
+Tema kursor Linux (X11) bertema Shirasu Azusa yang aku porting dan konversi secara manual dari format Windows (.ico / .ani) ke xcursorgen di Linux di bawah lisensi GPL-3.0.

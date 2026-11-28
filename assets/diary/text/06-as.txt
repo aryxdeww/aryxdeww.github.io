@@ -1,0 +1,10 @@
+Hai semua, masih dengan Arya disini. aku bakal jelasin kenapa aku bikin situs ini dan rencana awalku soal ini.
+
+Singkatnya, aku bikin situs ini aku bangun dengan bantuan AI (Gemini + ChatGPT) sebagai "**surat wasiat**" atau kenang-kenangan jika suatu saat aku tiada sebagaimana sudah kujelaskan di deskripsi repo situs ini di GitHub. nah alasannya karena aku ga yakin bisa hidup lama. dan sudah merencanakan untuk mengakhiri hidupku di umurku yang ke-20. tapi itu masih rencana, terjadi atau engga tergantung kondisiku kedepan, kalo makin buruk yasudah aku bundir aja...dan aku udah mempertimbangkan hal ini.
+
+Awalnya, situs ini cuma kubuat autobiography biasa...namun karena seiring waktu mencari tau apa saja yang bisa kulakukan dan apa yang ga bisa aku lakukan dengan git ini aku kepikiran buat bikin situs autobiography ku lebih *advanced* (nambah diary doang :v) yang kugunakan...curhat doang wkwkw seperti pada paragraf 2 isi diary ini. nah karena ideku bikin diary inilah dua judul diary lainnya di situs ini lahir, yaitu:
+1. "**Fictophile: Origin**"
+2. "**Keinginanku sebelum atau sesudah diriku tiada**"
+
+Demikian tentang situs ini.
+(last update on 28 Nov 2026, at 13:11 )

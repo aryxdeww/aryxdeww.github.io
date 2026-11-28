@@ -27,7 +27,7 @@ const diaryEntries = [
         type: "regular"
     },
     {
-        title: "Mengenai julukan fiktif ku",
+        title: "Mengenai julukan fiktif yang kubuat-buat",
         file: "00-mtk.txt",
         codename: "mtk",
         type: "regular"

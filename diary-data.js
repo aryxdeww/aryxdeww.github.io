@@ -9,6 +9,12 @@ const diaryEntries = [
 
 
     {
+        title: "Tentang situs yang kalian lihat sekarang.",
+        file: "06-as.txt",
+        codename: "aboutsite",
+        type: "special"
+    },
+    {
         title: "Keinginanku sebelum atau sesudah diriku tiada",
         file: "05-deadwish.txt",
         codename: "deadwish",
